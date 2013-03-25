@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adobe InDesign CS5 7.0.3.535 -->
+<grammar xmlns:idPkg="http://ns.adobe.com/AdobeInDesign/idml/1.0/packaging" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="Mapping_File"/>
+  </start>
+  <include href="../datatype.rng"/>
+  <define name="Mapping_File">
+    <element name="idPkg:Mapping">
+      <attribute name="DOMVersion">
+        <value>7.0</value>
+      </attribute>
+      <group>
+        <zeroOrMore>
+          <ref name="XMLExportMap_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="XMLImportMap_Object"/>
+        </zeroOrMore>
+      </group>
+    </element>
+  </define>
+  <define name="XMLExportMap_Object">
+    <element name="XMLExportMap">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="MarkupTag">
+        <data type="string"/>
+      </attribute>
+      <attribute name="MappedStyle">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="IncludeMasterPageStories">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludePasteboardStories">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeEmptyStories">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="XMLImportMap_Object">
+    <element name="XMLImportMap">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="MarkupTag">
+        <data type="string"/>
+      </attribute>
+      <attribute name="MappedStyle">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+</grammar>

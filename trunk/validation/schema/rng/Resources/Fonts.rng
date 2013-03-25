@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adobe InDesign CS5 7.0.3.535 -->
+<grammar xmlns:idPkg="http://ns.adobe.com/AdobeInDesign/idml/1.0/packaging" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="Fonts_File"/>
+  </start>
+  <include href="../datatype.rng"/>
+  <define name="Fonts_File">
+    <element name="idPkg:Fonts">
+      <attribute name="DOMVersion">
+        <value>7.0</value>
+      </attribute>
+      <group>
+        <zeroOrMore>
+          <ref name="FontFamily_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="CompositeFont_Object"/>
+        </zeroOrMore>
+      </group>
+    </element>
+  </define>
+  <define name="FontFamily_Object">
+    <element name="FontFamily">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <zeroOrMore>
+        <ref name="Font_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Font_Object">
+    <element name="Font">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="FontFamily">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PostScriptName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Status">
+          <ref name="FontStatus_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FontStyleName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FontType">
+          <ref name="FontTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WritingScript">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FullName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FullNameNative">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FontStyleNameNative">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PlatformName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Version">
+          <data type="string"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="CompositeFont_Object">
+    <element name="CompositeFont">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="CompositeFontEntry_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="CompositeFontEntry_Object">
+    <element name="CompositeFontEntry">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FontStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RelativeSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HorizontalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CustomCharacters">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Locked">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ScaleOption">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BaselineShift">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="AppliedFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+</grammar>
