@@ -55,36 +55,35 @@
                   [matches(
                     @name, 
                     concat('^', $validate-dirs-regex))
-                  ]"/>
+                  ]" />
     <p:output port="result" primary="true">
       <p:pipe step="val-component" port="text" />
     </p:output>
-    
+
     <p:xslt name="rng-selection">
       <p:input port="stylesheet">
         <p:inline>
           <xsl:stylesheet version="2.0">
+            <xsl:param name="base-uri" />
+            <xsl:variable name="dom-version"
+              select="document(concat($base-uri,'/designmap.xml'))/*/@DOMVersion"/>
             <xsl:template match="/c:file">
-              <xsl:choose>
-                <xsl:when test="matches(@name, '^Stories')">
-                  <c:result>Stories/Story.rng</c:result>
-                </xsl:when>
-                <xsl:when test="matches(@name, '^Spreads/')">
-                  <c:result>Spreads/Spread.rng</c:result>
-                </xsl:when>
-                <xsl:when test="matches(@name, '^MasterSpreads/')">
-                  <c:result>MasterSpreads/MasterSpread.rng</c:result>
-                </xsl:when>
-                <xsl:otherwise>
-                  <c:result>
+              <c:result>
+                <xsl:value-of select="$dom-version, '/'" separator=""/>
+                <xsl:choose>
+                  <xsl:when test="matches(@name, '^Stories')">Stories/Story.rng</xsl:when>
+                  <xsl:when test="matches(@name, '^Spreads/')">Spreads/Spread.rng</xsl:when>
+                  <xsl:when test="matches(@name, '^MasterSpreads/')">MasterSpreads/MasterSpread.rng</xsl:when>
+                  <xsl:otherwise>
                     <xsl:value-of select="replace(@name, 'xml$', 'rng')"/>
-                  </c:result>
-                </xsl:otherwise>
-              </xsl:choose>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </c:result>
             </xsl:template>
           </xsl:stylesheet>
         </p:inline>
       </p:input>
+      <p:with-param name="base-uri" select="base-uri()"/>
       <p:input port="parameters"><p:empty/></p:input>
     </p:xslt>
 
@@ -95,7 +94,11 @@
     </p:load>
 
     <letex:validate-with-rng-sch name="val-component">
-      <p:with-option name="rngfile" select="resolve-uri(concat('../schema/rng/', /c:result), static-base-uri())">
+      <p:with-option name="rngfile" 
+        select="resolve-uri(
+                  concat('../schema/rng/', /c:result), 
+                  static-base-uri()
+                )">
         <p:pipe step="rng-selection" port="result"/>
       </p:with-option>
       <p:with-option name="info-messages" select="'false'" />
@@ -106,13 +109,5 @@
   <p:wrap-sequence wrapper="c:results" name="val-component-wrapper"/>
 
   <p:sink />
-
-  <p:load name="designmap">
-    <p:with-option name="href" select="concat(/c:files/@xml:base, 'designmap.xml')">
-      <p:pipe step="unzip" port="result"/>
-    </p:with-option>
-  </p:load>
-
-  <p:sink/>
 
 </p:declare-step>
