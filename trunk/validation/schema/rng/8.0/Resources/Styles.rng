@@ -4,7 +4,7 @@
   <start>
     <ref name="Styles_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Styles_File">
     <element name="idPkg:Styles">
       <attribute name="DOMVersion">

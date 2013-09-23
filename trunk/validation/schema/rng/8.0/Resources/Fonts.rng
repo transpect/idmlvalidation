@@ -4,7 +4,7 @@
   <start>
     <ref name="Fonts_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Fonts_File">
     <element name="idPkg:Fonts">
       <attribute name="DOMVersion">

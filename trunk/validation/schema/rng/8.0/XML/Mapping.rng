@@ -4,7 +4,7 @@
   <start>
     <ref name="Mapping_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Mapping_File">
     <element name="idPkg:Mapping">
       <attribute name="DOMVersion">

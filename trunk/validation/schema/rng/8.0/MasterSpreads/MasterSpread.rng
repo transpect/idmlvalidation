@@ -4,7 +4,7 @@
   <start>
     <ref name="MasterSpread_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="MasterSpread_File">
     <element name="idPkg:MasterSpread">
       <attribute name="DOMVersion">

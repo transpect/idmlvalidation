@@ -4,7 +4,7 @@
   <start>
     <ref name="Spread_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Spread_File">
     <element name="idPkg:Spread">
       <attribute name="DOMVersion">
