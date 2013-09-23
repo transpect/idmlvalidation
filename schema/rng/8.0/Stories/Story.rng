@@ -4,7 +4,7 @@
   <start>
     <ref name="Story_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Story_File">
     <element name="idPkg:Story">
       <attribute name="DOMVersion">

@@ -4,7 +4,7 @@
   <start>
     <ref name="Tags_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Tags_File">
     <element name="idPkg:Tags">
       <attribute name="DOMVersion">

@@ -4,7 +4,7 @@
   <start>
     <ref name="Graphic_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Graphic_File">
     <element name="idPkg:Graphic">
       <attribute name="DOMVersion">

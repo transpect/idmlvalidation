@@ -4,7 +4,7 @@
   <start>
     <ref name="Preferences_File"/>
   </start>
-  <include href="datatype.rng"/>
+  <include href="../datatype.rng"/>
   <define name="Preferences_File">
     <element name="idPkg:Preferences">
       <attribute name="DOMVersion">
