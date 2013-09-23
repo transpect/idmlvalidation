@@ -4,17 +4,16 @@
   xmlns:cx ="http://xmlcalabash.com/ns/extensions"
   xmlns:xsl ="http://www.w3.org/1999/XSL/Transform" 
   xmlns:letex ="http://www.le-tex.de/namespace"
-  xmlns:idml2xml = "http://www.le-tex.de/namespace/idml2xml"
   version="1.0"
-  name="idml_validation"
-  type="idml2xml:idml-validation"
+  name="idml-validation"
+  type="letex:idml-validation"
   >
 
-  <p:option name="idmlfile" />
+  <p:option name="idmlfile" required="true"/>
 
-  <!-- option validate-dirs-regex:
-       choose in which directories idmlval should look for files to validate -->
-  <p:option name="validate-dirs-regex" select="'(Resources|XML|MasterSpreads|Spreads|Stories)'" />
+  <!-- option validate-regex:
+       choose regex for files and in which directories idmlval should validate -->
+  <p:option name="validate-regex" select="'(designmap|Resources|XML|MasterSpreads|Spreads|Stories)'" />
 
   <p:output port="result" primary="true">
     <p:pipe step="val-component-wrapper" port="result"/>
@@ -36,13 +35,13 @@
               tokenize($idmlfile, '/')[last()],
               '. Files in idml container: ', count(/c:files/*), 
               ' (stories: ', count(/c:files/*[matches(@name, '^Stories')]), ')',
-              '&#xa;Folder regex: ', $validate-dirs-regex, 
+              '&#xa;Folder regex: ', $validate-regex, 
               '&#xa;Validating ', 
               count(/c:files
                       /c:file
                         [matches(
                           @name, 
-                          concat('^', $validate-dirs-regex))
+                          concat('^', $validate-regex))
                         ]
                    ),
               ' files ...'"/>
@@ -54,7 +53,7 @@
                 /c:file
                   [matches(
                     @name, 
-                    concat('^', $validate-dirs-regex))
+                    concat('^', $validate-regex))
                   ]" />
     <p:output port="result" primary="true">
       <p:pipe step="val-component" port="text" />
@@ -101,13 +100,14 @@
                 )">
         <p:pipe step="rng-selection" port="result"/>
       </p:with-option>
-      <p:with-option name="info-messages" select="'false'" />
+      <p:with-option name="info-messages" select="'true'" />
     </letex:validate-with-rng-sch>
     <p:sink/>
+
   </p:for-each>
 
-  <p:wrap-sequence wrapper="c:results" name="val-component-wrapper"/>
+  <p:wrap-sequence group-adjacent="true()" wrapper="c:results" name="val-component-wrapper"/>
 
-  <p:sink />
+  <p:sink/>
 
 </p:declare-step>
