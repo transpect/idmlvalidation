@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adobe InDesign CS6 8.0.0.370 -->
+<grammar xmlns:idPkg="http://ns.adobe.com/AdobeInDesign/idml/1.0/packaging" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="Tags_File"/>
+  </start>
+  <include href="datatype.rng"/>
+  <define name="Tags_File">
+    <element name="idPkg:Tags">
+      <attribute name="DOMVersion">
+        <value>8.0</value>
+      </attribute>
+      <zeroOrMore>
+        <ref name="XMLTag_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="XMLTag_Object">
+    <element name="XMLTag">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="TagColor">
+                <ref name="InDesignUIColorType_TypeDef"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+</grammar>
