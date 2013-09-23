@@ -1,0 +1,6029 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adobe InDesign CS5.5 7.5.3.333 -->
+<grammar xmlns:idPkg="http://ns.adobe.com/AdobeInDesign/idml/1.0/packaging" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="Styles_File"/>
+  </start>
+  <include href="../datatype.rng"/>
+  <define name="Styles_File">
+    <element name="idPkg:Styles">
+      <attribute name="DOMVersion">
+        <value>7.5</value>
+      </attribute>
+      <group>
+        <optional>
+          <ref name="RootCharacterStyleGroup_Object"/>
+        </optional>
+        <optional>
+          <ref name="RootParagraphStyleGroup_Object"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="TOCStyle_Object"/>
+        </zeroOrMore>
+        <optional>
+          <ref name="RootCellStyleGroup_Object"/>
+        </optional>
+        <optional>
+          <ref name="RootTableStyleGroup_Object"/>
+        </optional>
+        <optional>
+          <ref name="RootObjectStyleGroup_Object"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="TrapPreset_Object"/>
+        </zeroOrMore>
+      </group>
+    </element>
+  </define>
+  <define name="RootCharacterStyleGroup_Object">
+    <element name="RootCharacterStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="CharacterStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="CharacterStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="CharacterStyle_Object">
+    <element name="CharacterStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Imported">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FontStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PointSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KerningMethod">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Tracking">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Capitalization">
+          <ref name="Capitalization_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Position">
+          <ref name="Position_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Underline">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThru">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Ligatures">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NoBreak">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HorizontalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BaselineShift">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Skew">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintStroke">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintFill">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFFigureStyle">
+          <ref name="OTFFigureStyle_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFOrdinal">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFFraction">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFDiscretionaryLigature">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFTitling">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFContextualAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFSwash">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AppliedLanguage">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeyboardShortcut">
+          <list>
+            <data type="short"/>
+            <data type="short"/>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFSlashedZero">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFHistorical">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFStylisticSets">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillLength">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStrokeLength">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStrokeAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillStart">
+          <ref name="UnitPointType_TypeDef"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStrokeStart">
+          <ref name="UnitPointType_TypeDef"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFMark">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFLocale">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PositionalForm">
+          <ref name="PositionalForms_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KerningValue">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="MiterLimit">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeAlignment">
+          <ref name="TextStrokeAlign_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndJoin">
+          <ref name="OutlineJoin_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFOverlapSwash">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFStylisticAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFJustificationAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFStretchedAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterDirection">
+          <ref name="CharacterDirectionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeyboardDirection">
+          <ref name="CharacterDirectionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DigitsType">
+          <ref name="DigitsTypeOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Kashidas">
+          <ref name="KashidasOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiacriticPosition">
+          <ref name="DiacriticPositionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="XOffsetDiacritic">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="YOffsetDiacritic">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ParagraphBreakType">
+          <ref name="ParagraphBreakTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PageNumberType">
+          <ref name="PageNumberTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterAlignment">
+          <ref name="CharacterAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Tsume">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeadingAki">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TrailingAki">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterRotation">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Jidori">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiMagnification">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiDegreeAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiAdjustRotation">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiAdjustTsume">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Tatechuyoko">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TatechuyokoXOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TatechuyokoYOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenOverprintFill">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenOverprintStroke">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenKind">
+          <ref name="KentenCharacter_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenPlacement">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenAlignment">
+          <ref name="KentenAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenPosition">
+          <ref name="RubyKentenPosition_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenFontSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenXScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenYScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenCustomCharacter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenCharacterSet">
+          <ref name="KentenCharacterSet_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOverprintFill">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOverprintStroke">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyFontSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOpenTypePro">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyXScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyYScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyType">
+          <ref name="RubyTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAlignment">
+          <ref name="RubyAlignments_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyPosition">
+          <ref name="RubyKentenPosition_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyXOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyYOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyParentSpacing">
+          <ref name="RubyParentSpacing_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoAlign">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOverhang">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoScaling">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyParentScalingPercent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyParentOverhangAmount">
+          <ref name="RubyOverhang_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Warichu">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuLines">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuLineSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuAlignment">
+          <ref name="WarichuAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuCharsAfterBreak">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuCharsBeforeBreak">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFProportionalMetrics">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFHVKana">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFRomanItalics">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ScaleAffectsLineHeight">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CjkGridTracking">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GlyphForm">
+          <ref name="AlternateGlyphForms_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoTcyDigits">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoTcyIncludeRoman">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoTcyAutoScale">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="BasedOn">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="AppliedFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Leading">
+                <choice>
+                  <group>
+                    <ref name="unit_type"/>
+                    <data type="double"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="Leading_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="UnderlineColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="UnderlineGapColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="UnderlineType">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="StrikeThroughColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="StrikeThroughGapColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="StrikeThroughType">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="PreviewColor">
+                <choice>
+                  <ref name="InDesignUIColorType_TypeDef"/>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenFillColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenStrokeColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenFontStyle">
+                <choice>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyFill">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyStroke">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyFontStyle">
+                <choice>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="StyleExportTagMap_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="StyleExportTagMap_Object">
+    <element name="StyleExportTagMap">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="ExportType">
+        <data type="string"/>
+      </attribute>
+      <attribute name="ExportTag">
+        <data type="string"/>
+      </attribute>
+      <attribute name="ExportClass">
+        <data type="string"/>
+      </attribute>
+      <attribute name="ExportAttributes">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="CharacterStyleGroup_Object">
+    <element name="CharacterStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="CharacterStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="CharacterStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="RootParagraphStyleGroup_Object">
+    <element name="RootParagraphStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="ParagraphStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="ParagraphStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="ParagraphStyle_Object">
+    <element name="ParagraphStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Imported">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NextStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FontStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PointSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KerningMethod">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Tracking">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Capitalization">
+          <ref name="Capitalization_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Position">
+          <ref name="Position_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Underline">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThru">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Ligatures">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NoBreak">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HorizontalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BaselineShift">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Skew">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintStroke">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintFill">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFFigureStyle">
+          <ref name="OTFFigureStyle_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFOrdinal">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFFraction">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFDiscretionaryLigature">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFTitling">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFContextualAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFSwash">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrikeThroughWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AppliedLanguage">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FirstLineIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpaceBefore">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpaceAfter">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Justification">
+          <ref name="Justification_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SingleWordJustification">
+          <ref name="SingleWordJustification_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AutoLeading">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DropCapLines">
+          <data type="short">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">25</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DropCapCharacters">
+          <data type="short">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">150</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeepLinesTogether">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeepAllLinesTogether">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeepWithNext">
+          <data type="short">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">5</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeepFirstLines">
+          <data type="short">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">50</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeepLastLines">
+          <data type="short">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">50</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartParagraph">
+          <ref name="StartParagraph_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Composer">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MinimumWordSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MaximumWordSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DesiredWordSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MinimumLetterSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MaximumLetterSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DesiredLetterSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MinimumGlyphScaling">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MaximumGlyphScaling">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DesiredGlyphScaling">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAbove">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveLineWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveLeftIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveRightIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveWidth">
+          <ref name="RuleWidth_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleAboveGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowLineWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowLeftIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowRightIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowWidth">
+          <ref name="RuleWidth_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenateCapitalizedWords">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Hyphenation">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenateBeforeLast">
+          <data type="short">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">15</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenateAfterFirst">
+          <data type="short">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">15</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenateWordsLongerThan">
+          <data type="short">
+            <param name="minInclusive">3</param>
+            <param name="maxInclusive">25</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenateLadderLimit">
+          <data type="short">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">25</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenationZone">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenWeight">
+          <data type="short">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">10</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeyboardShortcut">
+          <list>
+            <data type="short"/>
+            <data type="short"/>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LastLineIndent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenateLastWord">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFSlashedZero">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFHistorical">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFStylisticSets">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillLength">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStrokeLength">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStrokeAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillStart">
+          <ref name="UnitPointType_TypeDef"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStrokeStart">
+          <ref name="UnitPointType_TypeDef"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeepWithPrevious">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpanColumnType">
+          <ref name="SpanColumnTypeOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SplitColumnInsideGutter">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SplitColumnOutsideGutter">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpanColumnMinSpaceBefore">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpanColumnMinSpaceAfter">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RuleBelowGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DropcapDetail">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenateAcrossColumns">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeepRuleAboveInFrame">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IgnoreEdgeAlignment">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFMark">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFLocale">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PositionalForm">
+          <ref name="PositionalForms_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ParagraphDirection">
+          <ref name="ParagraphDirectionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ParagraphJustification">
+          <ref name="ParagraphJustificationOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MiterLimit">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeAlignment">
+          <ref name="TextStrokeAlign_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndJoin">
+          <ref name="OutlineJoin_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFOverlapSwash">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFStylisticAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFJustificationAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFStretchedAlternate">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterDirection">
+          <ref name="CharacterDirectionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeyboardDirection">
+          <ref name="CharacterDirectionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DigitsType">
+          <ref name="DigitsTypeOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Kashidas">
+          <ref name="KashidasOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiacriticPosition">
+          <ref name="DiacriticPositionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="XOffsetDiacritic">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="YOffsetDiacritic">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ParagraphBreakType">
+          <ref name="ParagraphBreakTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PageNumberType">
+          <ref name="PageNumberTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GridAlignFirstLineOnly">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GridAlignment">
+          <ref name="GridAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GridGyoudori">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AutoTcy">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AutoTcyIncludeRoman">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KinsokuType">
+          <ref name="KinsokuType_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KinsokuHangType">
+          <ref name="KinsokuHangTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BunriKinshi">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Rensuuji">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RotateSingleByteCharacters">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeadingModel">
+          <ref name="LeadingModel_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterAlignment">
+          <ref name="CharacterAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Tsume">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeadingAki">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TrailingAki">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterRotation">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Jidori">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiMagnification">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiDegreeAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiAdjustRotation">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShataiAdjustTsume">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Tatechuyoko">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TatechuyokoXOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TatechuyokoYOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenOverprintFill">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenOverprintStroke">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenKind">
+          <ref name="KentenCharacter_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenPlacement">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenAlignment">
+          <ref name="KentenAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenPosition">
+          <ref name="RubyKentenPosition_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenFontSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenXScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenYScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenCustomCharacter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KentenCharacterSet">
+          <ref name="KentenCharacterSet_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOverprintFill">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOverprintStroke">
+          <ref name="AdornmentOverprint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyFontSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOpenTypePro">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyXScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyYScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyType">
+          <ref name="RubyTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAlignment">
+          <ref name="RubyAlignments_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyPosition">
+          <ref name="RubyKentenPosition_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyXOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyYOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyParentSpacing">
+          <ref name="RubyParentSpacing_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoAlign">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyOverhang">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoScaling">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyParentScalingPercent">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyParentOverhangAmount">
+          <ref name="RubyOverhang_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Warichu">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuLines">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuLineSpacing">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuAlignment">
+          <ref name="WarichuAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuCharsAfterBreak">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarichuCharsBeforeBreak">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFProportionalMetrics">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFHVKana">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OTFRomanItalics">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ScaleAffectsLineHeight">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CjkGridTracking">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GlyphForm">
+          <ref name="AlternateGlyphForms_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ParagraphGyoudori">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoTcyDigits">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoTcyIncludeRoman">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RubyAutoTcyAutoScale">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TreatIdeographicSpaceAsSpace">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AllowArbitraryHyphenation">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BulletsAndNumberingListType">
+          <ref name="ListType_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NumberingExpression">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BulletsTextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NumberingLevel">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NumberingContinue">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NumberingStartAt">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NumberingApplyRestartPolicy">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BulletsAlignment">
+          <ref name="ListAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NumberingAlignment">
+          <ref name="ListAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="BasedOn">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="AppliedFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Leading">
+                <choice>
+                  <group>
+                    <ref name="unit_type"/>
+                    <data type="double"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="Leading_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="UnderlineColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="UnderlineGapColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="UnderlineType">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="StrikeThroughColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="StrikeThroughGapColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="StrikeThroughType">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="BalanceRaggedLines">
+                <choice>
+                  <group>
+                    <ref name="bool_type"/>
+                    <data type="boolean"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="BalanceLinesStyle_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RuleAboveColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RuleAboveGapColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RuleAboveType">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RuleBelowColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RuleBelowGapColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RuleBelowType">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="SpanSplitColumnCount">
+                <choice>
+                  <group>
+                    <ref name="short_type"/>
+                    <data type="short">
+                      <param name="minInclusive">1</param>
+                      <param name="maxInclusive">40</param>
+                    </data>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="SpanColumnCountOptions_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="PreviewColor">
+                <choice>
+                  <ref name="InDesignUIColorType_TypeDef"/>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="AllLineStyles">
+                <ref name="list_type"/>
+                <zeroOrMore>
+                  <element name="ListItem">
+                    <ref name="record_type"/>
+                    <interleave>
+                      <element name="AppliedCharacterStyle">
+                        <ref name="object_type"/>
+                        <data type="string"/>
+                      </element>
+                      <element name="LineCount">
+                        <ref name="long_type"/>
+                        <data type="int"/>
+                      </element>
+                      <element name="RepeatLast">
+                        <ref name="long_type"/>
+                        <data type="int"/>
+                      </element>
+                    </interleave>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+            <optional>
+              <element name="AllGREPStyles">
+                <ref name="list_type"/>
+                <zeroOrMore>
+                  <element name="ListItem">
+                    <ref name="record_type"/>
+                    <interleave>
+                      <element name="AppliedCharacterStyle">
+                        <ref name="object_type"/>
+                        <data type="string"/>
+                      </element>
+                      <element name="GrepExpression">
+                        <ref name="string_type"/>
+                        <data type="string"/>
+                      </element>
+                    </interleave>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+            <optional>
+              <element name="AllNestedStyles">
+                <ref name="list_type"/>
+                <zeroOrMore>
+                  <element name="ListItem">
+                    <ref name="record_type"/>
+                    <interleave>
+                      <element name="AppliedCharacterStyle">
+                        <ref name="object_type"/>
+                        <data type="string"/>
+                      </element>
+                      <element name="Delimiter">
+                        <choice>
+                          <group>
+                            <ref name="string_type"/>
+                            <data type="string"/>
+                          </group>
+                          <group>
+                            <ref name="enum_type"/>
+                            <ref name="NestedStyleDelimiters_EnumValue"/>
+                          </group>
+                        </choice>
+                      </element>
+                      <element name="Repetition">
+                        <ref name="long_type"/>
+                        <data type="int"/>
+                      </element>
+                      <element name="Inclusive">
+                        <ref name="bool_type"/>
+                        <data type="boolean"/>
+                      </element>
+                    </interleave>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+            <optional>
+              <element name="TabList">
+                <ref name="list_type"/>
+                <zeroOrMore>
+                  <element name="ListItem">
+                    <ref name="record_type"/>
+                    <interleave>
+                      <element name="Alignment">
+                        <ref name="enum_type"/>
+                        <ref name="TabStopAlignment_EnumValue"/>
+                      </element>
+                      <element name="AlignmentCharacter">
+                        <ref name="string_type"/>
+                        <data type="string"/>
+                      </element>
+                      <element name="Leader">
+                        <ref name="string_type"/>
+                        <data type="string"/>
+                      </element>
+                      <element name="Position">
+                        <ref name="unit_type"/>
+                        <data type="double"/>
+                      </element>
+                    </interleave>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+            <optional>
+              <element name="KinsokuSet">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="KinsokuSet_EnumValue"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Mojikumi">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="MojikumiTableDefaults_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenFillColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenStrokeColor">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="KentenFontStyle">
+                <choice>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyFill">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyStroke">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="RubyFontStyle">
+                <choice>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="BulletChar">
+                <attribute name="BulletCharacterType">
+                  <ref name="BulletCharacterType_EnumValue"/>
+                </attribute>
+                <attribute name="BulletCharacterValue">
+                  <data type="int"/>
+                </attribute>
+              </element>
+            </optional>
+            <optional>
+              <element name="BulletsFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="AutoEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="BulletsFontStyle">
+                <choice>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="AutoEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="BulletsCharacterStyle">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="NumberingCharacterStyle">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="AppliedNumberingList">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="NumberingFormat">
+                <choice>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NumberingStyle_EnumValue"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="NumberingRestartPolicies">
+                <attribute name="RestartPolicy">
+                  <ref name="RestartPolicy_EnumValue"/>
+                </attribute>
+                <attribute name="LowerLevel">
+                  <data type="int"/>
+                </attribute>
+                <attribute name="UpperLevel">
+                  <data type="int"/>
+                </attribute>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="StyleExportTagMap_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="ParagraphStyleGroup_Object">
+    <element name="ParagraphStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="ParagraphStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="ParagraphStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="TOCStyle_Object">
+    <element name="TOCStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="TitleStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Title">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="RunIn">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeHidden">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeBookDocuments">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CreateBookmarks">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SetStoryDirection">
+          <ref name="HorizontalOrVertical_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NumberedParagraphs">
+          <ref name="NumberedParagraphsOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="TOCStyleEntry_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="TOCStyleEntry_Object">
+    <element name="TOCStyleEntry">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Level">
+          <data type="short"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PageNumberPosition">
+          <ref name="PageNumberPosition_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Separator">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SortAlphabet">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="FormatStyle">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="PageNumberStyle">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="SeparatorStyle">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="RootCellStyleGroup_Object">
+    <element name="RootCellStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="CellStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="CellStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="CellStyle_Object">
+    <element name="CellStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="AppliedParagraphStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillLength">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillStart">
+          <ref name="UnitPointType_TypeDef"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopInset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftInset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomInset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightInset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintFill">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopLeftDiagonalLine">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopRightDiagonalLine">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineInFront">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DiagonalLineStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ClipContentToCell">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FirstBaselineOffset">
+          <ref name="FirstBaseline_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalJustification">
+          <ref name="VerticalJustification_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ParagraphSpacingLimit">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MinimumFirstBaselineOffset">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8640</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RotationAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftEdgeStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopEdgeStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightEdgeStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomEdgeStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeyboardShortcut">
+          <list>
+            <data type="short"/>
+            <data type="short"/>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RotationRunsAgainstStory">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="BasedOn">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="CellStyleGroup_Object">
+    <element name="CellStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="CellStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="CellStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="RootTableStyleGroup_Object">
+    <element name="RootTableStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="TableStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="TableStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="TableStyle_Object">
+    <element name="TableStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="StrokeOrder">
+          <ref name="StrokeOrderTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopBorderStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftBorderStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomBorderStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightBorderStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpaceBefore">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpaceAfter">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipFirstAlternatingStrokeRows">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipLastAlternatingStrokeRows">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipFirstAlternatingStrokeColumns">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipLastAlternatingStrokeColumns">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnLineStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeGapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeGapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnStrokeGapOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColumnFillsPriority">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipFirstAlternatingFillRows">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipLastAlternatingFillRows">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowFillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowFillCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowFillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartRowFillOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowFillCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowFillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowFillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndRowFillOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipFirstAlternatingFillColumns">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SkipLastAlternatingFillColumns">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnFillCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnFillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnFillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartColumnFillOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnFillCount">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnFillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnFillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndColumnFillOverprint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HeaderRegionSameAsBodyRegion">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FooterRegionSameAsBodyRegion">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftColumnRegionSameAsBodyRegion">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightColumnRegionSameAsBodyRegion">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HeaderRegionCellStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FooterRegionCellStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftColumnRegionCellStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightColumnRegionCellStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BodyRegionCellStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeyboardShortcut">
+          <list>
+            <data type="short"/>
+            <data type="short"/>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="BasedOn">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="TableStyleGroup_Object">
+    <element name="TableStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="TableStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="TableStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="RootObjectStyleGroup_Object">
+    <element name="RootObjectStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="ObjectStyleGroup_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="ObjectStyle_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="ObjectStyleGroup_Object">
+    <element name="ObjectStyleGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="ObjectStyle_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="ObjectStyleGroup_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="ObjectStyle_Object">
+    <element name="ObjectStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="AppliedParagraphStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ApplyNextParagraphStyle">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableFill">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableStroke">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableParagraphStyle">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableTextFrameGeneralOptions">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableTextFrameBaselineOptions">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableStoryOptions">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableTextWrapAndOthers">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableAnchoredObjectOptions">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CornerRadius">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FillTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintFill">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeWeight">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MiterLimit">
+          <data type="double">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">500</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndCap">
+          <ref name="EndCap_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndJoin">
+          <ref name="EndJoin_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeType">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftLineEnd">
+          <ref name="ArrowHead_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightLineEnd">
+          <ref name="ArrowHead_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintStroke">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GapColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GapTint">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OverprintGap">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeAlignment">
+          <ref name="StrokeAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Nonprinting">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientFillAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStrokeAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeCornerAdjustment">
+          <ref name="StrokeCornerAdjustment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeDashAndGap">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AppliedNamedGrid">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KeyboardShortcut">
+          <list>
+            <data type="short"/>
+            <data type="short"/>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopLeftCornerOption">
+          <ref name="CornerOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopRightCornerOption">
+          <ref name="CornerOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomLeftCornerOption">
+          <ref name="CornerOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomRightCornerOption">
+          <ref name="CornerOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopLeftCornerRadius">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopRightCornerRadius">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomLeftCornerRadius">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomRightCornerRadius">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableFrameFittingOptions">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CornerOption">
+          <ref name="CornerOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableStrokeAndCornerOptions">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="BasedOn">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+      <interleave>
+        <optional>
+          <ref name="TextFramePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="BaselineFrameGridOption_Object"/>
+        </optional>
+        <optional>
+          <ref name="AnchoredObjectSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="TextWrapPreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="StoryPreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="FrameFittingOption_Object"/>
+        </optional>
+        <optional>
+          <ref name="TransparencySetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="StrokeTransparencySetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="FillTransparencySetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="ContentTransparencySetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="ObjectStyleObjectEffectsCategorySettings_Object"/>
+        </optional>
+        <optional>
+          <ref name="ObjectStyleStrokeEffectsCategorySettings_Object"/>
+        </optional>
+        <optional>
+          <ref name="ObjectStyleFillEffectsCategorySettings_Object"/>
+        </optional>
+        <optional>
+          <ref name="ObjectStyleContentEffectsCategorySettings_Object"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="TextFramePreference_Object">
+    <element name="TextFramePreference">
+      <optional>
+        <attribute name="TextColumnCount">
+          <data type="int">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">40</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextColumnGutter">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8640</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextColumnFixedWidth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8640</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UseFixedColumnWidth">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FirstBaselineOffset">
+          <ref name="FirstBaseline_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MinimumFirstBaselineOffset">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8640</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalJustification">
+          <ref name="VerticalJustification_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalThreshold">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8640</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IgnoreWrap">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalBalanceColumns">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="InsetSpacing">
+              <choice>
+                <group>
+                  <ref name="unit_type"/>
+                  <data type="double">
+                    <param name="minInclusive">0</param>
+                    <param name="maxInclusive">8640</param>
+                  </data>
+                </group>
+                <group>
+                  <ref name="list_type"/>
+                  <element name="ListItem">
+                    <ref name="unit_type"/>
+                    <data type="double">
+                      <param name="minInclusive">0</param>
+                      <param name="maxInclusive">8640</param>
+                    </data>
+                  </element>
+                  <element name="ListItem">
+                    <ref name="unit_type"/>
+                    <data type="double">
+                      <param name="minInclusive">0</param>
+                      <param name="maxInclusive">8640</param>
+                    </data>
+                  </element>
+                  <element name="ListItem">
+                    <ref name="unit_type"/>
+                    <data type="double">
+                      <param name="minInclusive">0</param>
+                      <param name="maxInclusive">8640</param>
+                    </data>
+                  </element>
+                  <element name="ListItem">
+                    <ref name="unit_type"/>
+                    <data type="double">
+                      <param name="minInclusive">0</param>
+                      <param name="maxInclusive">8640</param>
+                    </data>
+                  </element>
+                </group>
+              </choice>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="BaselineFrameGridOption_Object">
+    <element name="BaselineFrameGridOption">
+      <optional>
+        <attribute name="UseCustomBaselineFrameGrid">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StartingOffsetForBaselineFrameGrid">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8640</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BaselineFrameGridRelativeOption">
+          <ref name="BaselineFrameGridRelativeOption_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BaselineFrameGridIncrement">
+          <data type="double">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">8640</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="BaselineFrameGridColor">
+              <ref name="InDesignUIColorType_TypeDef"/>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="AnchoredObjectSetting_Object">
+    <element name="AnchoredObjectSetting">
+      <optional>
+        <attribute name="AnchoredPosition">
+          <ref name="AnchorPosition_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpineRelative">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LockPosition">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PinPosition">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AnchorPoint">
+          <ref name="AnchorPoint_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HorizontalAlignment">
+          <ref name="HorizontalAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HorizontalReferencePoint">
+          <ref name="AnchoredRelativeTo_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalAlignment">
+          <ref name="VerticalAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalReferencePoint">
+          <ref name="VerticallyRelativeTo_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AnchorXoffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AnchorYoffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AnchorSpaceAbove">
+          <data type="double"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="TextWrapPreference_Object">
+    <element name="TextWrapPreference">
+      <optional>
+        <attribute name="Inverse">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ApplyToMasterPageOnly">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextWrapSide">
+          <ref name="TextWrapSideOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextWrapMode">
+          <ref name="TextWrapModes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="TextWrapOffset">
+                <ref name="UnitRectangleBoundsType_TypeDef"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="PathGeometry">
+                <zeroOrMore>
+                  <element name="GeometryPathType">
+                    <ref name="GeometryPathType_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+      <optional>
+        <ref name="ContourOption_Object"/>
+      </optional>
+    </element>
+  </define>
+  <define name="ContourOption_Object">
+    <element name="ContourOption">
+      <optional>
+        <attribute name="ContourType">
+          <ref name="ContourOptionsTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeInsideEdges">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ContourPathName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="StoryPreference_Object">
+    <element name="StoryPreference">
+      <optional>
+        <attribute name="OpticalMarginAlignment">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OpticalMarginSize">
+          <data type="double">
+            <param name="minInclusive">0.1</param>
+            <param name="maxInclusive">1296</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FrameType">
+          <ref name="FrameTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StoryOrientation">
+          <ref name="StoryHorizontalOrVertical_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StoryDirection">
+          <ref name="StoryDirectionOptions_EnumValue"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="FrameFittingOption_Object">
+    <element name="FrameFittingOption">
+      <optional>
+        <attribute name="AutoFit">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftCrop">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopCrop">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightCrop">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomCrop">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FittingOnEmptyFrame">
+          <ref name="EmptyFrameFittingOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FittingAlignment">
+          <ref name="AnchorPoint_EnumValue"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="TransparencySetting_Object">
+    <element name="TransparencySetting">
+      <interleave>
+        <optional>
+          <ref name="BlendingSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DropShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="FeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="OuterGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="BevelAndEmbossSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="SatinSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DirectionalFeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="GradientFeatherSetting_Object"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="BlendingSetting_Object">
+    <element name="BlendingSetting">
+      <optional>
+        <attribute name="BlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Opacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KnockoutGroup">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IsolateBlending">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="DropShadowSetting_Object">
+    <element name="DropShadowSetting">
+      <optional>
+        <attribute name="Distance">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Angle">
+          <data type="double">
+            <param name="minInclusive">-180</param>
+            <param name="maxInclusive">180</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Mode">
+          <ref name="ShadowMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Opacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="XOffset">
+          <data type="double">
+            <param name="minInclusive">-1000</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="YOffset">
+          <data type="double">
+            <param name="minInclusive">-1000</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Size">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">144</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EffectColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Noise">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Spread">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UseGlobalLight">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="KnockedOut">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HonorOtherEffects">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="FeatherSetting_Object">
+    <element name="FeatherSetting">
+      <optional>
+        <attribute name="Mode">
+          <ref name="FeatherMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Width">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CornerType">
+          <ref name="FeatherCornerType_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Noise">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ChokeAmount">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="InnerShadowSetting_Object">
+    <element name="InnerShadowSetting">
+      <optional>
+        <attribute name="XOffset">
+          <data type="double">
+            <param name="minInclusive">-1000</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="YOffset">
+          <data type="double">
+            <param name="minInclusive">-1000</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Applied">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EffectColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Opacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Angle">
+          <data type="double">
+            <param name="minInclusive">-180</param>
+            <param name="maxInclusive">180</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Distance">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UseGlobalLight">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ChokeAmount">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Size">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">144</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Noise">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="OuterGlowSetting_Object">
+    <element name="OuterGlowSetting">
+      <optional>
+        <attribute name="Applied">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Opacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Noise">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EffectColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Technique">
+          <ref name="GlowTechnique_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Spread">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Size">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">144</param>
+          </data>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="InnerGlowSetting_Object">
+    <element name="InnerGlowSetting">
+      <optional>
+        <attribute name="Applied">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Opacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Noise">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EffectColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Technique">
+          <ref name="GlowTechnique_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Spread">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Size">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">144</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Source">
+          <ref name="InnerGlowSource_EnumValue"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="BevelAndEmbossSetting_Object">
+    <element name="BevelAndEmbossSetting">
+      <optional>
+        <attribute name="Applied">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Style">
+          <ref name="BevelAndEmbossStyle_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Technique">
+          <ref name="BevelAndEmbossTechnique_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Depth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Direction">
+          <ref name="BevelAndEmbossDirection_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Size">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">144</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Soften">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">144</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Angle">
+          <data type="double">
+            <param name="minInclusive">-180</param>
+            <param name="maxInclusive">180</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Altitude">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UseGlobalLight">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HighlightColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HighlightBlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HighlightOpacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShadowColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShadowBlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShadowOpacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="SatinSetting_Object">
+    <element name="SatinSetting">
+      <optional>
+        <attribute name="Applied">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EffectColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlendMode">
+          <ref name="BlendMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Opacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Angle">
+          <data type="double">
+            <param name="minInclusive">-180</param>
+            <param name="maxInclusive">180</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Distance">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Size">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">144</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InvertEffect">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="DirectionalFeatherSetting_Object">
+    <element name="DirectionalFeatherSetting">
+      <optional>
+        <attribute name="Applied">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LeftWidth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RightWidth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TopWidth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BottomWidth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">1000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ChokeAmount">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Angle">
+          <data type="double">
+            <param name="minInclusive">-180</param>
+            <param name="maxInclusive">180</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FollowShapeMode">
+          <ref name="FollowShapeModeOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Noise">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="GradientFeatherSetting_Object">
+    <element name="GradientFeatherSetting">
+      <optional>
+        <attribute name="Applied">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Type">
+          <ref name="GradientType_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Angle">
+          <data type="double">
+            <param name="minInclusive">-180</param>
+            <param name="maxInclusive">180</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Length">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GradientStart">
+          <ref name="UnitPointType_TypeDef"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HiliteAngle">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HiliteLength">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <zeroOrMore>
+        <ref name="OpacityGradientStop_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="OpacityGradientStop_Object">
+    <element name="OpacityGradientStop">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Opacity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Location">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Midpoint">
+          <data type="double">
+            <param name="minInclusive">13</param>
+            <param name="maxInclusive">87</param>
+          </data>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="StrokeTransparencySetting_Object">
+    <element name="StrokeTransparencySetting">
+      <interleave>
+        <optional>
+          <ref name="BlendingSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DropShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="FeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="OuterGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="BevelAndEmbossSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="SatinSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DirectionalFeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="GradientFeatherSetting_Object"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="FillTransparencySetting_Object">
+    <element name="FillTransparencySetting">
+      <interleave>
+        <optional>
+          <ref name="BlendingSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DropShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="FeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="OuterGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="BevelAndEmbossSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="SatinSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DirectionalFeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="GradientFeatherSetting_Object"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="ContentTransparencySetting_Object">
+    <element name="ContentTransparencySetting">
+      <interleave>
+        <optional>
+          <ref name="BlendingSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DropShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="FeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerShadowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="OuterGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="InnerGlowSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="BevelAndEmbossSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="SatinSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="DirectionalFeatherSetting_Object"/>
+        </optional>
+        <optional>
+          <ref name="GradientFeatherSetting_Object"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="ObjectStyleObjectEffectsCategorySettings_Object">
+    <element name="ObjectStyleObjectEffectsCategorySettings">
+      <optional>
+        <attribute name="EnableTransparency">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDropShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableOuterGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableBevelEmboss">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableSatin">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDirectionalFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableGradientFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="ObjectStyleStrokeEffectsCategorySettings_Object">
+    <element name="ObjectStyleStrokeEffectsCategorySettings">
+      <optional>
+        <attribute name="EnableTransparency">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDropShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableOuterGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableBevelEmboss">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableSatin">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDirectionalFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableGradientFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="ObjectStyleFillEffectsCategorySettings_Object">
+    <element name="ObjectStyleFillEffectsCategorySettings">
+      <optional>
+        <attribute name="EnableTransparency">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDropShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableOuterGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableBevelEmboss">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableSatin">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDirectionalFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableGradientFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="ObjectStyleContentEffectsCategorySettings_Object">
+    <element name="ObjectStyleContentEffectsCategorySettings">
+      <optional>
+        <attribute name="EnableTransparency">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDropShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerShadow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableOuterGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableInnerGlow">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableBevelEmboss">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableSatin">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableDirectionalFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EnableGradientFeather">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="TrapPreset_Object">
+    <element name="TrapPreset">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="DefaultTrapWidth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlackWidth">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">8</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TrapJoin">
+          <ref name="EndJoin_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TrapEnd">
+          <ref name="TrapEndTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ObjectsToImages">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ImagesToImages">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InternalImages">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="OneBitImages">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ImagePlacement">
+          <ref name="TrapImagePlacementTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StepThreshold">
+          <data type="double">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlackColorThreshold">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BlackDensity">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">10</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SlidingTrapThreshold">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorReduction">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+</grammar>
