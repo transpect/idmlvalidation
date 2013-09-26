@@ -35,7 +35,7 @@
               tokenize($idmlfile, '/')[last()],
               '. Files in idml container: ', count(/c:files/*), 
               ' (stories: ', count(/c:files/*[matches(@name, '^Stories')]), ')',
-              '&#xa;Folder regex: ', $validate-regex, 
+              '&#xa;Files/Folder regex: ', $validate-regex, 
               '&#xa;Validating ', 
               count(/c:files
                       /c:file
