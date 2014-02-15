@@ -4,6 +4,10 @@ mkdir -p rng/$1/Spreads
 mkdir -p rng/$1/Resources
 mkdir -p rng/$1/Stories
 mkdir -p rng/$1/XML
+#set trang=C:/xml/trang-20091111/trang.jar
+for rncfile in rnc/$1/*.rnc; do \
+    java -jar /data/develop/pglatza/trang-20091111/trang.jar $rncfile rng/$1/`basename ${rncfile} .rnc`.rng ; \
+done
 for rncfile in rnc/$1/MasterSpreads/*; do \
     java -jar /data/develop/pglatza/trang-20091111/trang.jar $rncfile rng/$1/MasterSpreads/`basename ${rncfile} .rnc`.rng ; \
     sed -i '/datatype.rng/c\  <include href="..\/datatype.rng"\/>' rng/$1/MasterSpreads/`basename ${rncfile} .rnc`.rng
