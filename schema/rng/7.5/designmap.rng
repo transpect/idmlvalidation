@@ -1,0 +1,2264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adobe InDesign CS5.5 7.5.3.333 -->
+<grammar xmlns:idPkg="http://ns.adobe.com/AdobeInDesign/idml/1.0/packaging" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="Document_Object"/>
+  </start>
+  <include href="datatype.rng"/>
+  <define name="Document_Object">
+    <element name="Document">
+      <attribute name="DOMVersion">
+        <value>7.5</value>
+      </attribute>
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ActiveProcess">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TransparencyAttributeDefaultProperty">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StoryList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FullName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FilePath">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Modified">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Saved">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ZeroPoint">
+          <ref name="UnitPointType_TypeDef"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnusedSwatches">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ActiveLayer">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Converted">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Recovered">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ReadOnly">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Id">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CMYKProfileList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RGBProfileList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CMYKProfile">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RGBProfile">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SolidColorIntent">
+          <ref name="RenderingIntent_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AfterBlendingIntent">
+          <ref name="RenderingIntent_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DefaultImageIntent">
+          <ref name="RenderingIntent_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RGBPolicy">
+          <ref name="ColorSettingsPolicy_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CMYKPolicy">
+          <ref name="ColorSettingsPolicy_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AccurateLABSpots">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="InstanceList">
+                <zeroOrMore>
+                  <element name="IndexInstanceType">
+                    <ref name="IndexInstanceType_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+      <group>
+        <zeroOrMore>
+          <ref name="Language_Object"/>
+        </zeroOrMore>
+        <optional>
+          <element name="idPkg:Graphic">
+            <attribute name="src">
+              <value>Resources/Graphic.xml</value>
+            </attribute>
+          </element>
+        </optional>
+        <optional>
+          <element name="idPkg:Fonts">
+            <attribute name="src">
+              <value>Resources/Fonts.xml</value>
+            </attribute>
+          </element>
+        </optional>
+        <zeroOrMore>
+          <ref name="KinsokuTable_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="MojikumiTable_Object"/>
+        </zeroOrMore>
+        <optional>
+          <element name="idPkg:Styles">
+            <attribute name="src">
+              <value>Resources/Styles.xml</value>
+            </attribute>
+          </element>
+        </optional>
+        <zeroOrMore>
+          <ref name="NumberingList_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="NamedGrid_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="MotionPreset_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Condition_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="ConditionSet_Object"/>
+        </zeroOrMore>
+        <interleave>
+          <optional>
+            <element name="idPkg:Preferences">
+              <attribute name="src">
+                <value>Resources/Preferences.xml</value>
+              </attribute>
+            </element>
+          </optional>
+          <optional>
+            <ref name="LinkedStoryOption_Object"/>
+          </optional>
+          <optional>
+            <ref name="TaggedPDFPreference_Object"/>
+          </optional>
+          <optional>
+            <ref name="MetadataPacketPreference_Object"/>
+          </optional>
+          <optional>
+            <ref name="WatermarkPreference_Object"/>
+          </optional>
+          <optional>
+            <ref name="ConditionalTextPreference_Object"/>
+          </optional>
+        </interleave>
+        <zeroOrMore>
+          <ref name="TextVariable_Object"/>
+        </zeroOrMore>
+        <optional>
+          <element name="idPkg:Tags">
+            <attribute name="src">
+              <value>XML/Tags.xml</value>
+            </attribute>
+          </element>
+        </optional>
+        <zeroOrMore>
+          <ref name="Layer_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="idPkg:MasterSpread">
+            <attribute name="src">
+              <data type="string">
+                <param name="pattern">.*\.xml</param>
+              </data>
+            </attribute>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="idPkg:Spread">
+            <attribute name="src">
+              <data type="string">
+                <param name="pattern">.*\.xml</param>
+              </data>
+            </attribute>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Section_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="DocumentUser_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="CrossReferenceFormat_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Index_Object"/>
+        </zeroOrMore>
+        <optional>
+          <element name="idPkg:BackingStory">
+            <attribute name="src">
+              <value>XML/BackingStory.xml</value>
+            </attribute>
+          </element>
+        </optional>
+        <zeroOrMore>
+          <element name="idPkg:Story">
+            <attribute name="src">
+              <data type="string">
+                <param name="pattern">.*\.xml</param>
+              </data>
+            </attribute>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="HyperlinkPageDestination_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="HyperlinkURLDestination_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="HyperlinkExternalPageDestination_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="HyperlinkPageItemSource_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Hyperlink_Object"/>
+        </zeroOrMore>
+        <optional>
+          <element name="idPkg:Mapping">
+            <attribute name="src">
+              <value>XML/Mapping.xml</value>
+            </attribute>
+          </element>
+        </optional>
+        <zeroOrMore>
+          <ref name="Bookmark_Object"/>
+        </zeroOrMore>
+        <interleave>
+          <zeroOrMore>
+            <ref name="PreflightProfile_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="DataMergeImagePlaceholder_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="HyphenationException_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="IndexingSortOption_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="ABullet_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="Assignment_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="Article_Object"/>
+          </zeroOrMore>
+        </interleave>
+      </group>
+    </element>
+  </define>
+  <define name="Language_Object">
+    <element name="Language">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="SingleQuotes">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DoubleQuotes">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PrimaryLanguageName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SublanguageName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Id">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HyphenationVendor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpellingVendor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="KinsokuTable_Object">
+    <element name="KinsokuTable">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="CantBeginLineChars">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CantEndLineChars">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HangingPunctuationChars">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CantBeSeparatedChars">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="MojikumiTable_Object">
+    <element name="MojikumiTable">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="BasedOnMojikumiSet">
+          <ref name="MojikumiTableDefaults_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="OverrideMojikumiAkiList">
+                <zeroOrMore>
+                  <element name="OverrideMojikumiAkiType">
+                    <ref name="OverrideMojikumiAkiType_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="NumberingList_Object">
+    <element name="NumberingList">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ContinueNumbersAcrossStories">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ContinueNumbersAcrossDocuments">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="NamedGrid_Object">
+    <element name="NamedGrid">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <optional>
+        <ref name="GridDataInformation_Object"/>
+      </optional>
+    </element>
+  </define>
+  <define name="GridDataInformation_Object">
+    <element name="GridDataInformation">
+      <optional>
+        <attribute name="FontStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PointSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterAki">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LineAki">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HorizontalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="VerticalScale">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LineAlignment">
+          <ref name="LineAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GridAlignment">
+          <ref name="GridAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterAlignment">
+          <ref name="CharacterAlignment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="GridView">
+          <ref name="GridViewSettings_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterCountLocation">
+          <ref name="CharacterCountLocation_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterCountSize">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="AppliedFont">
+              <choice>
+                <group>
+                  <ref name="object_type"/>
+                  <data type="string"/>
+                </group>
+                <group>
+                  <ref name="string_type"/>
+                  <data type="string"/>
+                </group>
+              </choice>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="MotionPreset_Object">
+    <element name="MotionPreset">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EditLocked">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DeleteLocked">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NameLocked">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="Contents">
+                <data type="string"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Condition_Object">
+    <element name="Condition">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="IndicatorMethod">
+          <ref name="ConditionIndicatorMethod_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UnderlineIndicatorAppearance">
+          <ref name="ConditionUnderlineIndicatorAppearance_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="IndicatorColor">
+                <ref name="InDesignUIColorType_TypeDef"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="ConditionSet_Object">
+    <element name="ConditionSet">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="SetConditions">
+                <zeroOrMore>
+                  <element name="VisibilityPair">
+                    <ref name="VisibilityPair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="LinkedStoryOption_Object">
+    <element name="LinkedStoryOption">
+      <optional>
+        <attribute name="UpdateWhileSaving">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WarnOnUpdateOfEditedStory">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="RemoveForcedLineBreaks">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="TaggedPDFPreference_Object">
+    <element name="TaggedPDFPreference">
+      <optional>
+        <attribute name="StructureOrder">
+          <ref name="TaggedPDFStructureOrderOptions_EnumValue"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="MetadataPacketPreference_Object">
+    <element name="MetadataPacketPreference">
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Contents">
+              <data type="string"/>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="WatermarkPreference_Object">
+    <element name="WatermarkPreference">
+      <optional>
+        <attribute name="WatermarkVisibility">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkDoPrint">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkDrawInBack">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkText">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkFontFamily">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkFontStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkFontPointSize">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkOpacity">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkRotation">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkHorizontalPosition">
+          <ref name="WatermarkHorizontalPositionEnum_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkHorizontalOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkVerticalPosition">
+          <ref name="WatermarkVerticalPositionEnum_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="WatermarkVerticalOffset">
+          <data type="double"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="WatermarkFontColor">
+              <ref name="InDesignUIColorType_TypeDef"/>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="ConditionalTextPreference_Object">
+    <element name="ConditionalTextPreference">
+      <optional>
+        <attribute name="ShowConditionIndicators">
+          <ref name="ConditionIndicatorMode_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ActiveConditionSet">
+          <data type="string"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="TextVariable_Object">
+    <element name="TextVariable">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="VariableType">
+          <ref name="VariableTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <interleave>
+        <optional>
+          <ref name="CustomTextVariablePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="FileNameVariablePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="PageNumberVariablePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="ChapterNumberVariablePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="DateVariablePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="MatchCharacterStylePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="MatchParagraphStylePreference_Object"/>
+        </optional>
+        <optional>
+          <ref name="CaptionMetadataVariablePreference_Object"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="CustomTextVariablePreference_Object">
+    <element name="CustomTextVariablePreference">
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Contents">
+              <choice>
+                <group>
+                  <ref name="string_type"/>
+                  <data type="string"/>
+                </group>
+                <group>
+                  <ref name="enum_type"/>
+                  <ref name="SpecialCharacters_EnumValue"/>
+                </group>
+                <group>
+                  <ref name="object_type"/>
+                  <data type="string"/>
+                </group>
+              </choice>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="FileNameVariablePreference_Object">
+    <element name="FileNameVariablePreference">
+      <optional>
+        <attribute name="TextBefore">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludePath">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeExtension">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="PageNumberVariablePreference_Object">
+    <element name="PageNumberVariablePreference">
+      <optional>
+        <attribute name="TextBefore">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Format">
+          <ref name="VariableNumberingStyles_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Scope">
+          <ref name="VariableScopes_EnumValue"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="ChapterNumberVariablePreference_Object">
+    <element name="ChapterNumberVariablePreference">
+      <optional>
+        <attribute name="TextBefore">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Format">
+          <ref name="VariableNumberingStyles_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="DateVariablePreference_Object">
+    <element name="DateVariablePreference">
+      <optional>
+        <attribute name="TextBefore">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Format">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="MatchCharacterStylePreference_Object">
+    <element name="MatchCharacterStylePreference">
+      <optional>
+        <attribute name="TextBefore">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AppliedCharacterStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SearchStrategy">
+          <ref name="SearchStrategies_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ChangeCase">
+          <ref name="ChangeCaseOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DeleteEndPunctuation">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="MatchParagraphStylePreference_Object">
+    <element name="MatchParagraphStylePreference">
+      <optional>
+        <attribute name="TextBefore">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AppliedParagraphStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SearchStrategy">
+          <ref name="SearchStrategies_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ChangeCase">
+          <ref name="ChangeCaseOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DeleteEndPunctuation">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="CaptionMetadataVariablePreference_Object">
+    <element name="CaptionMetadataVariablePreference">
+      <optional>
+        <attribute name="TextBefore">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MetadataProviderName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TextAfter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="Layer_Object">
+    <element name="Layer">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Locked">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IgnoreWrap">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ShowGuides">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="LockGuides">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UI">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Expendable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Printable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="LayerColor">
+                <ref name="InDesignUIColorType_TypeDef"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Section_Object">
+    <element name="Section">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Length">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ContinueNumbering">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeSectionPrefix">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PageNumberStart">
+          <data type="int">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">999999</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Marker">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PageStart">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SectionPrefix">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="PageNumberStyle">
+                <choice>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="PageNumberStyle_EnumValue"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="DocumentUser_Object">
+    <element name="DocumentUser">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="UserName">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="UserColor">
+              <ref name="InCopyUIColorType_TypeDef"/>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="CrossReferenceFormat_Object">
+    <element name="CrossReferenceFormat">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AppliedCharacterStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="BuildingBlock_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="BuildingBlock_Object">
+    <element name="BuildingBlock">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="BlockType">
+        <ref name="BuildingBlockTypes_EnumValue"/>
+      </attribute>
+      <optional>
+        <attribute name="AppliedCharacterStyle">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CustomText">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AppliedDelimiter">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeDelimiter">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="Index_Object">
+    <element name="Index">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="Topic_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Topic_Object">
+    <element name="Topic">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="SortOrder">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <interleave>
+        <zeroOrMore>
+          <ref name="Topic_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="CrossReference_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="CrossReference_Object">
+    <element name="CrossReference">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ReferencedTopic">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CrossReferenceType">
+          <ref name="CrossReferenceType_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CustomTypeString">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="HyperlinkPageDestination_Object">
+    <element name="HyperlinkPageDestination">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="NameManually">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DestinationPage">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ViewSetting">
+          <ref name="HyperlinkDestinationPageSetting_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ViewPercentage">
+          <data type="double">
+            <param name="minInclusive">5</param>
+            <param name="maxInclusive">4000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Hidden">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DestinationUniqueKey">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="ViewBounds">
+                <ref name="UnitRectangleBoundsType_TypeDef"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="HyperlinkURLDestination_Object">
+    <element name="HyperlinkURLDestination">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="DestinationUniqueKey">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="DestinationURL">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Hidden">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="HyperlinkExternalPageDestination_Object">
+    <element name="HyperlinkExternalPageDestination">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="DestinationUniqueKey">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DocumentPath">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DestinationPageIndex">
+          <data type="int">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">9999</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ViewSetting">
+          <ref name="HyperlinkDestinationPageSetting_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ViewPercentage">
+          <data type="double">
+            <param name="minInclusive">5</param>
+            <param name="maxInclusive">4000</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Hidden">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="ViewBounds">
+                <ref name="UnitRectangleBoundsType_TypeDef"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="HyperlinkPageItemSource_Object">
+    <element name="HyperlinkPageItemSource">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <attribute name="SourcePageItem">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Hidden">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Hyperlink_Object">
+    <element name="Hyperlink">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <attribute name="Source">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Highlight">
+          <ref name="HyperlinkAppearanceHighlight_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Width">
+          <ref name="HyperlinkAppearanceWidth_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BorderStyle">
+          <ref name="HyperlinkAppearanceStyle_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Hidden">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="DestinationUniqueKey">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="BorderColor">
+                <ref name="InDesignUIColorType_TypeDef"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Destination">
+                <choice>
+                  <group>
+                    <element name="FileName">
+                      <ref name="string_type"/>
+                      <data type="string"/>
+                    </element>
+                    <element name="Volumn">
+                      <ref name="string_type"/>
+                      <data type="string"/>
+                    </element>
+                    <element name="DirectoryId">
+                      <ref name="long_type"/>
+                      <data type="int"/>
+                    </element>
+                    <element name="DataLinkClassId">
+                      <ref name="long_type"/>
+                      <data type="int"/>
+                    </element>
+                    <element name="DestinationUid">
+                      <ref name="long_type"/>
+                      <data type="int"/>
+                    </element>
+                  </group>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Bookmark_Object">
+    <element name="Bookmark">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <attribute name="Destination">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="Bookmark_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="PreflightProfile_Object">
+    <element name="PreflightProfile">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Description">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="PreflightProfileRule_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="PreflightRuleInstance_Object"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="PreflightProfileRule_Object">
+    <element name="PreflightProfileRule">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <attribute name="Id">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Description">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Flag">
+          <ref name="PreflightRuleFlag_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="RuleDataObject_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="RuleDataObject_Object">
+    <element name="RuleDataObject">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <attribute name="DataType">
+        <ref name="RuleDataType_EnumValue"/>
+      </attribute>
+      <optional>
+        <attribute name="Id">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <element name="Properties">
+        <element name="DataValue">
+          <choice>
+            <group>
+              <ref name="string_type"/>
+              <data type="string"/>
+            </group>
+            <group>
+              <ref name="double_type"/>
+              <data type="double"/>
+            </group>
+            <group>
+              <ref name="long_type"/>
+              <data type="int"/>
+            </group>
+            <group>
+              <ref name="short_type"/>
+              <data type="short"/>
+            </group>
+            <group>
+              <ref name="bool_type"/>
+              <data type="boolean"/>
+            </group>
+            <group>
+              <ref name="object_type"/>
+              <data type="string"/>
+            </group>
+            <group>
+              <ref name="list_type"/>
+              <zeroOrMore>
+                <element name="ListItem">
+                  <choice>
+                    <group>
+                      <ref name="string_type"/>
+                      <data type="string"/>
+                    </group>
+                    <group>
+                      <ref name="double_type"/>
+                      <data type="double"/>
+                    </group>
+                    <group>
+                      <ref name="long_type"/>
+                      <data type="int"/>
+                    </group>
+                    <group>
+                      <ref name="short_type"/>
+                      <data type="short"/>
+                    </group>
+                    <group>
+                      <ref name="bool_type"/>
+                      <data type="boolean"/>
+                    </group>
+                    <group>
+                      <ref name="object_type"/>
+                      <data type="string"/>
+                    </group>
+                    <group>
+                      <ref name="list_type"/>
+                      <zeroOrMore>
+                        <element name="PreflightRuleDataListType">
+                          <ref name="PreflightRuleDataListType_TypeDef"/>
+                        </element>
+                      </zeroOrMore>
+                    </group>
+                  </choice>
+                </element>
+              </zeroOrMore>
+            </group>
+          </choice>
+        </element>
+      </element>
+    </element>
+  </define>
+  <define name="PreflightRuleInstance_Object">
+    <element name="PreflightRuleInstance">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <attribute name="Id">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Description">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Flag">
+          <ref name="PreflightRuleFlag_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="RuleDataObject_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="DataMergeImagePlaceholder_Object">
+    <element name="DataMergeImagePlaceholder">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Field">
+        <data type="string"/>
+      </attribute>
+      <attribute name="PlaceholderPageItem">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="HyphenationException_Object">
+    <element name="HyphenationException">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="RemovedExceptions">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AddedExceptions">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="IndexingSortOption_Object">
+    <element name="IndexingSortOption">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Include">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Priority">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="HeaderType">
+          <choice>
+            <ref name="HeaderTypes_EnumValue"/>
+            <ref name="NothingEnum_EnumValue"/>
+          </choice>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="ABullet_Object">
+    <element name="ABullet">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="CharacterType">
+          <ref name="BulletCharacterType_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="CharacterValue">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="BulletsFont">
+                <choice>
+                  <group>
+                    <ref name="object_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="AutoEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="BulletsFontStyle">
+                <choice>
+                  <group>
+                    <ref name="string_type"/>
+                    <data type="string"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="AutoEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Assignment_Object">
+    <element name="Assignment">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="UserName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ExportOptions">
+          <ref name="AssignmentExportOptions_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="IncludeLinksWhenPackage">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <attribute name="FilePath">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="FrameColor">
+                <choice>
+                  <ref name="InDesignUIColorType_TypeDef"/>
+                  <group>
+                    <ref name="enum_type"/>
+                    <ref name="NothingEnum_EnumValue"/>
+                  </group>
+                </choice>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="AssignedStory_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="AssignedStory_Object">
+    <element name="AssignedStory">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StoryReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="FilePath">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Article_Object">
+    <element name="Article">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Name">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ArticleExportStatus">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="ArticleMember_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="ArticleMember_Object">
+    <element name="ArticleMember">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="ItemRef">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+</grammar>
