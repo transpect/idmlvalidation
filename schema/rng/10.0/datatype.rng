@@ -1,0 +1,3050 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adobe InDesign CC 2014 10.0.0.70 -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="anything">
+    <zeroOrMore>
+      <choice>
+        <element>
+          <anyName/>
+          <ref name="anything"/>
+        </element>
+        <attribute>
+          <anyName/>
+        </attribute>
+        <text/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="empty_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">empty</value>
+    </attribute>
+  </define>
+  <define name="bool_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">boolean</value>
+    </attribute>
+  </define>
+  <define name="string_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">string</value>
+    </attribute>
+  </define>
+  <define name="short_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">short</value>
+    </attribute>
+  </define>
+  <define name="long_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">long</value>
+    </attribute>
+  </define>
+  <define name="longlong_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">longlong</value>
+    </attribute>
+  </define>
+  <define name="double_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">double</value>
+    </attribute>
+  </define>
+  <define name="object_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">object</value>
+    </attribute>
+  </define>
+  <define name="date_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">date</value>
+    </attribute>
+  </define>
+  <define name="file_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">file</value>
+    </attribute>
+  </define>
+  <define name="enum_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">enumeration</value>
+    </attribute>
+  </define>
+  <define name="unit_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">unit</value>
+    </attribute>
+  </define>
+  <define name="stream_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">binary</value>
+    </attribute>
+  </define>
+  <define name="list_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">list</value>
+    </attribute>
+  </define>
+  <define name="record_type">
+    <attribute name="type">
+      <value type="string" datatypeLibrary="">record</value>
+    </attribute>
+  </define>
+  <!-- A geometry path that contains the number of path points in the path, a list of all the path points, and whether the path is open. -->
+  <define name="GeometryPathType_TypeDef">
+    <attribute name="PathOpen">
+      <data type="boolean"/>
+    </attribute>
+    <element name="PathPointArray">
+      <zeroOrMore>
+        <element name="PathPointType">
+          <ref name="PathPointType_TypeDef"/>
+        </element>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- A point in the form (x, y). -->
+  <define name="XyPointType_TypeDef">
+    <list>
+      <data type="double"/>
+      <data type="double"/>
+    </list>
+  </define>
+  <!-- An InDesign path point containing (anchor point, left direction point, right direction point). -->
+  <define name="PathPointType_TypeDef">
+    <attribute name="Anchor">
+      <ref name="XyPointType_TypeDef"/>
+    </attribute>
+    <attribute name="LeftDirection">
+      <ref name="XyPointType_TypeDef"/>
+    </attribute>
+    <attribute name="RightDirection">
+      <ref name="XyPointType_TypeDef"/>
+    </attribute>
+  </define>
+  <!-- The bounds of a rectangle in the form [left, top, right, bottom]. -->
+  <define name="RectangleBoundsType_TypeDef">
+    <attribute name="Left">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Top">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Right">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Bottom">
+      <data type="double"/>
+    </attribute>
+  </define>
+  <!-- A transformation matrix in the form (a, b, c, d, e, f). -->
+  <define name="TransformationMatrixType_TypeDef">
+    <list>
+      <data type="double"/>
+      <data type="double"/>
+      <data type="double"/>
+      <data type="double"/>
+      <data type="double"/>
+      <data type="double"/>
+    </list>
+  </define>
+  <!-- An override mojikumi aki. -->
+  <define name="OverrideMojikumiAkiType_TypeDef">
+    <attribute name="TargetMojikumiClass">
+      <data type="short"/>
+    </attribute>
+    <attribute name="SideMojikumiClass">
+      <data type="short"/>
+    </attribute>
+    <attribute name="SideIsAfterTarget">
+      <data type="boolean"/>
+    </attribute>
+    <attribute name="Minimum">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Desired">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Maximum">
+      <data type="double"/>
+    </attribute>
+    <attribute name="CompressionPriority">
+      <data type="short"/>
+    </attribute>
+    <attribute name="AkiDoesNotFloat">
+      <data type="boolean"/>
+    </attribute>
+  </define>
+  <!-- A key value pair. -->
+  <define name="KeyValuePair_TypeDef">
+    <attribute name="Key">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Value">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- Properties or parameters using the InDesign UI Colors enumeration use this to specify the type as either one of the enumerated UI colors or a list of RGB values for a custom color. -->
+  <define name="InDesignUIColorType_TypeDef">
+    <choice>
+      <group>
+        <ref name="list_type"/>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">255</param>
+          </data>
+        </element>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">255</param>
+          </data>
+        </element>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">255</param>
+          </data>
+        </element>
+      </group>
+      <group>
+        <ref name="enum_type"/>
+        <ref name="UIColors_EnumValue"/>
+      </group>
+    </choice>
+  </define>
+  <!-- A point specified in unit type in the form (x, y). -->
+  <define name="UnitPointType_TypeDef">
+    <list>
+      <data type="double"/>
+      <data type="double"/>
+    </list>
+  </define>
+  <!-- The bounds of a rectangle specified in unit type in the form [top, left, bottom, right]. -->
+  <define name="UnitRectangleBoundsType_TypeDef">
+    <attribute name="Top">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Left">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Bottom">
+      <data type="double"/>
+    </attribute>
+    <attribute name="Right">
+      <data type="double"/>
+    </attribute>
+  </define>
+  <!-- Properties or parameters using the InCopy UI Colors enumeration use this to specify the type as either one of the enumerated UI colors or a list of RGB values for a custom color. -->
+  <define name="InCopyUIColorType_TypeDef">
+    <choice>
+      <group>
+        <ref name="list_type"/>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">255</param>
+          </data>
+        </element>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">255</param>
+          </data>
+        </element>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">255</param>
+          </data>
+        </element>
+      </group>
+      <group>
+        <ref name="enum_type"/>
+        <ref name="InCopyUIColors_EnumValue"/>
+      </group>
+    </choice>
+  </define>
+  <!-- A name value pair -->
+  <define name="NameValuePair_TypeDef">
+    <attribute name="Name">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Value">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- Index header group. -->
+  <define name="IndexHeaderGroupType_TypeDef">
+    <attribute name="InternalName">
+      <data type="string"/>
+    </attribute>
+    <attribute name="UIString">
+      <data type="string"/>
+    </attribute>
+    <attribute name="DocumentString">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Visibility">
+      <data type="boolean"/>
+    </attribute>
+    <element name="SectionHeaderArray">
+      <zeroOrMore>
+        <element name="SectionHeaderType">
+          <ref name="SectionHeaderType_TypeDef"/>
+        </element>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- Index section header. -->
+  <define name="SectionHeaderType_TypeDef">
+    <attribute name="SortingHeaderString">
+      <data type="string"/>
+    </attribute>
+    <attribute name="DocumentHeaderString">
+      <data type="string"/>
+    </attribute>
+    <attribute name="UIHeaderString">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Language">
+      <data type="int"/>
+    </attribute>
+  </define>
+  <!-- Index instance. -->
+  <define name="IndexInstanceType_TypeDef">
+    <attribute name="Name">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Story">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- The preflight error results for a single node, consisting of up to three strings describing error info for that node. -->
+  <define name="PreflightErrorNodeType_TypeDef">
+    <attribute name="ParentNodeID">
+      <data type="int"/>
+    </attribute>
+    <attribute name="ErrorName">
+      <data type="string"/>
+    </attribute>
+    <attribute name="PageNumber">
+      <data type="string"/>
+    </attribute>
+    <attribute name="ErrorInfo">
+      <data type="string"/>
+    </attribute>
+    <element name="ErrorDetail">
+      <zeroOrMore>
+        <element name="PreflightErrorInfoType">
+          <ref name="PreflightErrorInfoType_TypeDef"/>
+        </element>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- The preflight results. -->
+  <define name="PreflightResultsType_TypeDef">
+    <attribute name="DocumentName">
+      <data type="string"/>
+    </attribute>
+    <attribute name="ProfileName">
+      <data type="string"/>
+    </attribute>
+    <element name="Results">
+      <zeroOrMore>
+        <element name="PreflightErrorNodeType">
+          <ref name="PreflightErrorNodeType_TypeDef"/>
+        </element>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- preflight error detail info type -->
+  <define name="PreflightErrorInfoType_TypeDef">
+    <attribute name="Label">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Description">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- preflight rule data base list type -->
+  <define name="PreflightRuleDataBaseListType_TypeDef">
+    <ref name="list_type"/>
+    <zeroOrMore>
+      <element name="ListItem">
+        <choice>
+          <group>
+            <ref name="string_type"/>
+            <data type="string"/>
+          </group>
+          <group>
+            <ref name="double_type"/>
+            <data type="double"/>
+          </group>
+          <group>
+            <ref name="long_type"/>
+            <data type="int"/>
+          </group>
+          <group>
+            <ref name="short_type"/>
+            <data type="short"/>
+          </group>
+          <group>
+            <ref name="bool_type"/>
+            <data type="boolean"/>
+          </group>
+          <group>
+            <ref name="object_type"/>
+            <data type="string"/>
+          </group>
+        </choice>
+      </element>
+    </zeroOrMore>
+  </define>
+  <!-- preflight rule data list type -->
+  <define name="PreflightRuleDataListType_TypeDef">
+    <ref name="list_type"/>
+    <zeroOrMore>
+      <element name="ListItem">
+        <ref name="list_type"/>
+        <zeroOrMore>
+          <element name="PreflightRuleDataBaseListType">
+            <ref name="PreflightRuleDataBaseListType_TypeDef"/>
+          </element>
+        </zeroOrMore>
+      </element>
+    </zeroOrMore>
+  </define>
+  <!-- An int64 in the form (high int32, low int32). -->
+  <define name="Int64Type_TypeDef">
+    <list>
+      <data type="int"/>
+      <data type="int"/>
+    </list>
+  </define>
+  <!-- animation data key frame type -->
+  <define name="AnimationDataKeyFrameType_TypeDef">
+    <attribute name="KeyFrame">
+      <data type="int"/>
+    </attribute>
+    <attribute name="Value">
+      <data type="double"/>
+    </attribute>
+  </define>
+  <!-- animation data motion path key frame type -->
+  <define name="AnimationDataPathKeyFrameType_TypeDef">
+    <attribute name="KeyFrame">
+      <data type="int"/>
+    </attribute>
+    <element name="PathPoint">
+      <ref name="PathPointType_TypeDef"/>
+    </element>
+  </define>
+  <!-- A condition and its visibility -->
+  <define name="VisibilityPair_TypeDef">
+    <attribute name="Condition">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Visibility">
+      <data type="boolean"/>
+    </attribute>
+  </define>
+  <!-- @private -->
+  <define name="RasterizeDocParams_TypeDef">
+    <data type="string"/>
+  </define>
+  <!-- @private -->
+  <define name="ExportMiniFolioParams_TypeDef">
+    <data type="string"/>
+  </define>
+  <!-- Metadata information for an exported folio. -->
+  <define name="ExportFolioMetaData_TypeDef">
+    <attribute name="Key">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Value">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- This can be used to map document names to explicit stack IDs -->
+  <define name="ExportFolioCsidMap_TypeDef">
+    <attribute name="Key">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Value">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- digital publishing dictionary element -->
+  <define name="DigitalPublishingDictionaryElement_TypeDef">
+    <ref name="list_type"/>
+    <zeroOrMore>
+      <element name="ListItem">
+        <ref name="DigitalPublishingDictionaryEntry_TypeDef"/>
+      </element>
+    </zeroOrMore>
+  </define>
+  <!-- @private -->
+  <define name="DigitalPublishingDictionaryValue_TypeDef">
+    <data type="string"/>
+  </define>
+  <!-- digital publishing dictionary entry -->
+  <define name="DigitalPublishingDictionaryEntry_TypeDef">
+    <attribute name="Key">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Value">
+      <ref name="DigitalPublishingDictionaryValue_TypeDef"/>
+    </attribute>
+  </define>
+  <!-- @private -->
+  <define name="ExportFolioParamsTypedef_TypeDef">
+    <data type="string"/>
+  </define>
+  <!-- A struct containing information about an attached device. -->
+  <define name="AttachedDeviceInfo_TypeDef">
+    <attribute name="DeviceID">
+      <data type="string"/>
+    </attribute>
+    <attribute name="Width">
+      <data type="int"/>
+    </attribute>
+    <attribute name="Height">
+      <data type="int"/>
+    </attribute>
+    <attribute name="Ppi">
+      <data type="int"/>
+    </attribute>
+    <attribute name="Os">
+      <data type="string"/>
+    </attribute>
+    <attribute name="DeviceModel">
+      <data type="string"/>
+    </attribute>
+    <attribute name="ViewerVersion">
+      <data type="string"/>
+    </attribute>
+    <attribute name="ViewerReleaseVersion">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- A struct containing information about the alternate layouts. -->
+  <define name="AlternateLayoutInfo_TypeDef">
+    <attribute name="LayoutName">
+      <data type="string"/>
+    </attribute>
+    <attribute name="NumberOfPages">
+      <data type="int"/>
+    </attribute>
+    <attribute name="PageWidthInPoints">
+      <data type="double"/>
+    </attribute>
+    <attribute name="PageHeightInPoints">
+      <data type="double"/>
+    </attribute>
+    <attribute name="AllPagesAreSameSize">
+      <data type="boolean"/>
+    </attribute>
+    <attribute name="LayoutPolicy">
+      <ref name="LayoutRuleOptions_EnumValue"/>
+    </attribute>
+    <attribute name="AllPagesUseSamePolicy">
+      <data type="boolean"/>
+    </attribute>
+    <attribute name="AnyPagesWithPolicyOff">
+      <data type="boolean"/>
+    </attribute>
+  </define>
+  <!-- overlay data value type -->
+  <define name="OverlayDataValueType_TypeDef">
+    <choice>
+      <group>
+        <ref name="long_type"/>
+        <data type="int"/>
+      </group>
+      <group>
+        <ref name="bool_type"/>
+        <data type="boolean"/>
+      </group>
+      <group>
+        <ref name="double_type"/>
+        <data type="double"/>
+      </group>
+      <group>
+        <ref name="string_type"/>
+        <data type="string"/>
+      </group>
+      <group>
+        <ref name="file_type"/>
+        <data type="string"/>
+      </group>
+      <group>
+        <ref name="list_type"/>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double"/>
+        </element>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double"/>
+        </element>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double"/>
+        </element>
+        <element name="ListItem">
+          <ref name="double_type"/>
+          <data type="double"/>
+        </element>
+      </group>
+      <group>
+        <ref name="object_type"/>
+        <data type="string"/>
+      </group>
+      <group>
+        <ref name="list_type"/>
+        <zeroOrMore>
+          <element name="ListItem">
+            <ref name="string_type"/>
+            <data type="string"/>
+          </element>
+        </zeroOrMore>
+      </group>
+      <group>
+        <ref name="list_type"/>
+        <zeroOrMore>
+          <element name="ListItem">
+            <ref name="file_type"/>
+            <data type="string"/>
+          </element>
+        </zeroOrMore>
+      </group>
+    </choice>
+  </define>
+  <!-- @private -->
+  <define name="OverlayDataType_TypeDef">
+    <data type="string"/>
+  </define>
+  <!-- overlay info type -->
+  <define name="OverlayInfoType_TypeDef">
+    <list>
+      <zeroOrMore>
+        <attribute name="OverlayDataType">
+          <ref name="OverlayDataType_TypeDef"/>
+        </attribute>
+      </zeroOrMore>
+    </list>
+  </define>
+  <define name="AddPageOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">EndOfStory</value>
+      <value type="string" datatypeLibrary="">EndOfSection</value>
+      <value type="string" datatypeLibrary="">EndOfDocument</value>
+    </choice>
+  </define>
+  <define name="AdornmentOverprint_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Auto</value>
+      <value type="string" datatypeLibrary="">OverprintOn</value>
+      <value type="string" datatypeLibrary="">OverprintOff</value>
+    </choice>
+  </define>
+  <define name="AlignmentStyleOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Spreadsheet</value>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+    </choice>
+  </define>
+  <define name="AlternateGlyphForms_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">TraditionalForm</value>
+      <value type="string" datatypeLibrary="">ExpertForm</value>
+      <value type="string" datatypeLibrary="">JIS78Form</value>
+      <value type="string" datatypeLibrary="">JIS83Form</value>
+      <value type="string" datatypeLibrary="">MonospacedHalfWidthForm</value>
+      <value type="string" datatypeLibrary="">ThirdWidthForm</value>
+      <value type="string" datatypeLibrary="">QuarterWidthForm</value>
+      <value type="string" datatypeLibrary="">NLCForm</value>
+      <value type="string" datatypeLibrary="">ProportionalWidthForm</value>
+      <value type="string" datatypeLibrary="">FullWidthForm</value>
+      <value type="string" datatypeLibrary="">JIS04Form</value>
+      <value type="string" datatypeLibrary="">JIS90Form</value>
+    </choice>
+  </define>
+  <define name="AlternativeDestination_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">IndexMarker</value>
+      <value type="string" datatypeLibrary="">TocTextAnchor</value>
+    </choice>
+  </define>
+  <define name="AnchorPoint_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopLeftAnchor</value>
+      <value type="string" datatypeLibrary="">TopCenterAnchor</value>
+      <value type="string" datatypeLibrary="">TopRightAnchor</value>
+      <value type="string" datatypeLibrary="">LeftCenterAnchor</value>
+      <value type="string" datatypeLibrary="">CenterAnchor</value>
+      <value type="string" datatypeLibrary="">RightCenterAnchor</value>
+      <value type="string" datatypeLibrary="">BottomLeftAnchor</value>
+      <value type="string" datatypeLibrary="">BottomCenterAnchor</value>
+      <value type="string" datatypeLibrary="">BottomRightAnchor</value>
+    </choice>
+  </define>
+  <define name="AnchorPosition_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">InlinePosition</value>
+      <value type="string" datatypeLibrary="">AboveLine</value>
+      <value type="string" datatypeLibrary="">Anchored</value>
+    </choice>
+  </define>
+  <define name="AnchoredRelativeTo_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ColumnEdge</value>
+      <value type="string" datatypeLibrary="">TextFrame</value>
+      <value type="string" datatypeLibrary="">PageMargins</value>
+      <value type="string" datatypeLibrary="">PageEdge</value>
+      <value type="string" datatypeLibrary="">AnchorLocation</value>
+    </choice>
+  </define>
+  <define name="AnimationEaseOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoEase</value>
+      <value type="string" datatypeLibrary="">EaseIn</value>
+      <value type="string" datatypeLibrary="">EaseOut</value>
+      <value type="string" datatypeLibrary="">EaseInOut</value>
+      <value type="string" datatypeLibrary="">CustomEase</value>
+    </choice>
+  </define>
+  <define name="AnimationPlayOperations_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Play</value>
+      <value type="string" datatypeLibrary="">Stop</value>
+      <value type="string" datatypeLibrary="">Pause</value>
+      <value type="string" datatypeLibrary="">Resume</value>
+      <value type="string" datatypeLibrary="">ReversePlayback</value>
+      <value type="string" datatypeLibrary="">StopAll</value>
+    </choice>
+  </define>
+  <define name="ArrowHead_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">SimpleArrowHead</value>
+      <value type="string" datatypeLibrary="">SimpleWideArrowHead</value>
+      <value type="string" datatypeLibrary="">TriangleArrowHead</value>
+      <value type="string" datatypeLibrary="">TriangleWideArrowHead</value>
+      <value type="string" datatypeLibrary="">BarbedArrowHead</value>
+      <value type="string" datatypeLibrary="">CurvedArrowHead</value>
+      <value type="string" datatypeLibrary="">CircleArrowHead</value>
+      <value type="string" datatypeLibrary="">CircleSolidArrowHead</value>
+      <value type="string" datatypeLibrary="">SquareArrowHead</value>
+      <value type="string" datatypeLibrary="">SquareSolidArrowHead</value>
+      <value type="string" datatypeLibrary="">BarArrowHead</value>
+    </choice>
+  </define>
+  <define name="AssignmentExportOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">EmptyFrames</value>
+      <value type="string" datatypeLibrary="">AssignedSpreads</value>
+      <value type="string" datatypeLibrary="">Everything</value>
+    </choice>
+  </define>
+  <define name="AutoEnum_EnumValue">
+    <value type="string" datatypeLibrary="">AutoValue</value>
+  </define>
+  <define name="AutoSizingReferenceEnum_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopLeftPoint</value>
+      <value type="string" datatypeLibrary="">TopCenterPoint</value>
+      <value type="string" datatypeLibrary="">TopRightPoint</value>
+      <value type="string" datatypeLibrary="">LeftCenterPoint</value>
+      <value type="string" datatypeLibrary="">CenterPoint</value>
+      <value type="string" datatypeLibrary="">RightCenterPoint</value>
+      <value type="string" datatypeLibrary="">BottomLeftPoint</value>
+      <value type="string" datatypeLibrary="">BottomCenterPoint</value>
+      <value type="string" datatypeLibrary="">BottomRightPoint</value>
+    </choice>
+  </define>
+  <define name="AutoSizingTypeEnum_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Off</value>
+      <value type="string" datatypeLibrary="">HeightOnly</value>
+      <value type="string" datatypeLibrary="">WidthOnly</value>
+      <value type="string" datatypeLibrary="">HeightAndWidth</value>
+      <value type="string" datatypeLibrary="">HeightAndWidthProportionally</value>
+    </choice>
+  </define>
+  <define name="BalanceLinesStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoBalancing</value>
+      <value type="string" datatypeLibrary="">VeeShape</value>
+      <value type="string" datatypeLibrary="">FullyBalanced</value>
+      <value type="string" datatypeLibrary="">PyramidShape</value>
+    </choice>
+  </define>
+  <define name="BaselineFrameGridRelativeOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopOfPage</value>
+      <value type="string" datatypeLibrary="">TopOfMargin</value>
+      <value type="string" datatypeLibrary="">TopOfFrame</value>
+      <value type="string" datatypeLibrary="">TopOfInset</value>
+    </choice>
+  </define>
+  <define name="BaselineGridRelativeOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopOfPageOfBaselineGridRelativeOption</value>
+      <value type="string" datatypeLibrary="">TopOfMarginOfBaselineGridRelativeOption</value>
+    </choice>
+  </define>
+  <define name="BehaviorEvents_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">MouseUp</value>
+      <value type="string" datatypeLibrary="">MouseDown</value>
+      <value type="string" datatypeLibrary="">MouseEnter</value>
+      <value type="string" datatypeLibrary="">MouseExit</value>
+      <value type="string" datatypeLibrary="">OnFocus</value>
+      <value type="string" datatypeLibrary="">OnBlur</value>
+    </choice>
+  </define>
+  <define name="BevelAndEmbossDirection_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Up</value>
+      <value type="string" datatypeLibrary="">Down</value>
+    </choice>
+  </define>
+  <define name="BevelAndEmbossStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">OuterBevel</value>
+      <value type="string" datatypeLibrary="">InnerBevel</value>
+      <value type="string" datatypeLibrary="">Emboss</value>
+      <value type="string" datatypeLibrary="">PillowEmboss</value>
+    </choice>
+  </define>
+  <define name="BevelAndEmbossTechnique_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SmoothContour</value>
+      <value type="string" datatypeLibrary="">ChiselHard</value>
+      <value type="string" datatypeLibrary="">ChiselSoft</value>
+    </choice>
+  </define>
+  <define name="BlendMode_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Normal</value>
+      <value type="string" datatypeLibrary="">Multiply</value>
+      <value type="string" datatypeLibrary="">Screen</value>
+      <value type="string" datatypeLibrary="">Overlay</value>
+      <value type="string" datatypeLibrary="">SoftLight</value>
+      <value type="string" datatypeLibrary="">HardLight</value>
+      <value type="string" datatypeLibrary="">ColorDodge</value>
+      <value type="string" datatypeLibrary="">ColorBurn</value>
+      <value type="string" datatypeLibrary="">Darken</value>
+      <value type="string" datatypeLibrary="">Lighten</value>
+      <value type="string" datatypeLibrary="">Difference</value>
+      <value type="string" datatypeLibrary="">Exclusion</value>
+      <value type="string" datatypeLibrary="">Hue</value>
+      <value type="string" datatypeLibrary="">Saturation</value>
+      <value type="string" datatypeLibrary="">Color</value>
+      <value type="string" datatypeLibrary="">Luminosity</value>
+    </choice>
+  </define>
+  <define name="BlendingSpace_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Default</value>
+      <value type="string" datatypeLibrary="">RGB</value>
+      <value type="string" datatypeLibrary="">CMYK</value>
+    </choice>
+  </define>
+  <define name="BookletTypeOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TwoUpSaddleStitch</value>
+      <value type="string" datatypeLibrary="">TwoUpPerfectBound</value>
+      <value type="string" datatypeLibrary="">TwoUpConsecutive</value>
+      <value type="string" datatypeLibrary="">ThreeUpConsecutive</value>
+      <value type="string" datatypeLibrary="">FourUpConsecutive</value>
+    </choice>
+  </define>
+  <define name="BuildingBlockTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CustomStringBuildingBlock</value>
+      <value type="string" datatypeLibrary="">FileNameBuildingBlock</value>
+      <value type="string" datatypeLibrary="">ChapterNumberBuildingBlock</value>
+      <value type="string" datatypeLibrary="">PageNumberBuildingBlock</value>
+      <value type="string" datatypeLibrary="">FullParagraphBuildingBlock</value>
+      <value type="string" datatypeLibrary="">ParagraphNumberBuildingBlock</value>
+      <value type="string" datatypeLibrary="">ParagraphTextBuildingBlock</value>
+      <value type="string" datatypeLibrary="">BookmarkNameBuildingBlock</value>
+    </choice>
+  </define>
+  <define name="BulletCharacterType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UnicodeOnly</value>
+      <value type="string" datatypeLibrary="">UnicodeWithFont</value>
+      <value type="string" datatypeLibrary="">GlyphWithFont</value>
+    </choice>
+  </define>
+  <define name="BulletListExportOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UnorderedList</value>
+      <value type="string" datatypeLibrary="">AsText</value>
+    </choice>
+  </define>
+  <define name="Capitalization_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Normal</value>
+      <value type="string" datatypeLibrary="">SmallCaps</value>
+      <value type="string" datatypeLibrary="">AllCaps</value>
+      <value type="string" datatypeLibrary="">CapToSmallCap</value>
+    </choice>
+  </define>
+  <define name="ChangeCaseOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Uppercase</value>
+      <value type="string" datatypeLibrary="">Lowercase</value>
+      <value type="string" datatypeLibrary="">Titlecase</value>
+      <value type="string" datatypeLibrary="">Sentencecase</value>
+    </choice>
+  </define>
+  <define name="ChangeTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">InsertedText</value>
+      <value type="string" datatypeLibrary="">DeletedText</value>
+      <value type="string" datatypeLibrary="">MovedText</value>
+    </choice>
+  </define>
+  <define name="ChapterNumberSources_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UserDefined</value>
+      <value type="string" datatypeLibrary="">ContinueFromPreviousDocument</value>
+      <value type="string" datatypeLibrary="">SameAsPreviousDocument</value>
+    </choice>
+  </define>
+  <define name="CharacterAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AlignBaseline</value>
+      <value type="string" datatypeLibrary="">AlignEmTop</value>
+      <value type="string" datatypeLibrary="">AlignEmCenter</value>
+      <value type="string" datatypeLibrary="">AlignEmBottom</value>
+      <value type="string" datatypeLibrary="">AlignICFTop</value>
+      <value type="string" datatypeLibrary="">AlignICFBottom</value>
+    </choice>
+  </define>
+  <define name="CharacterCountLocation_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">TopAlign</value>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">BottomAlign</value>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+    </choice>
+  </define>
+  <define name="CharacterDirectionOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DefaultDirection</value>
+      <value type="string" datatypeLibrary="">LeftToRightDirection</value>
+      <value type="string" datatypeLibrary="">RightToLeftDirection</value>
+    </choice>
+  </define>
+  <define name="ClippingPathType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">DetectEdges</value>
+      <value type="string" datatypeLibrary="">AlphaChannel</value>
+      <value type="string" datatypeLibrary="">PhotoshopPath</value>
+      <value type="string" datatypeLibrary="">UserModifiedPath</value>
+    </choice>
+  </define>
+  <define name="ColorModel_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Spot</value>
+      <value type="string" datatypeLibrary="">Process</value>
+      <value type="string" datatypeLibrary="">Registration</value>
+      <value type="string" datatypeLibrary="">Mixedinkmodel</value>
+    </choice>
+  </define>
+  <define name="ColorOutputModes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CompositeLeaveUnchanged</value>
+      <value type="string" datatypeLibrary="">CompositeGray</value>
+      <value type="string" datatypeLibrary="">CompositeRGB</value>
+      <value type="string" datatypeLibrary="">CompositeCMYK</value>
+      <value type="string" datatypeLibrary="">Separations</value>
+      <value type="string" datatypeLibrary="">InRIPSeparations</value>
+    </choice>
+  </define>
+  <define name="ColorOverride_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Normal</value>
+      <value type="string" datatypeLibrary="">Specialpaper</value>
+      <value type="string" datatypeLibrary="">Specialblack</value>
+      <value type="string" datatypeLibrary="">Specialregistration</value>
+      <value type="string" datatypeLibrary="">Hiddenreserved</value>
+      <value type="string" datatypeLibrary="">Mixedinkparent</value>
+    </choice>
+  </define>
+  <define name="ColorRenderingDictionary_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Default</value>
+      <value type="string" datatypeLibrary="">UseDocument</value>
+      <value type="string" datatypeLibrary="">Working</value>
+    </choice>
+  </define>
+  <define name="ColorSettingsPolicy_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ColorPolicyOff</value>
+      <value type="string" datatypeLibrary="">PreserveEmbeddedProfiles</value>
+      <value type="string" datatypeLibrary="">ConvertToWorkingSpace</value>
+      <value type="string" datatypeLibrary="">CombinationOfPreserveAndSafeCmyk</value>
+    </choice>
+  </define>
+  <define name="ColorSpace_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RGB</value>
+      <value type="string" datatypeLibrary="">CMYK</value>
+      <value type="string" datatypeLibrary="">LAB</value>
+      <value type="string" datatypeLibrary="">MixedInk</value>
+      <value type="string" datatypeLibrary="">NoAlternateColor</value>
+    </choice>
+  </define>
+  <define name="ComposeUsing_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UseUserDictionary</value>
+      <value type="string" datatypeLibrary="">UseDocument</value>
+      <value type="string" datatypeLibrary="">Both</value>
+    </choice>
+  </define>
+  <define name="ConditionIndicatorMethod_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UseUnderline</value>
+      <value type="string" datatypeLibrary="">UseHighlight</value>
+    </choice>
+  </define>
+  <define name="ConditionIndicatorMode_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ShowIndicators</value>
+      <value type="string" datatypeLibrary="">ShowAndPrintIndicators</value>
+      <value type="string" datatypeLibrary="">HideIndicators</value>
+    </choice>
+  </define>
+  <define name="ConditionUnderlineIndicatorAppearance_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Wavy</value>
+      <value type="string" datatypeLibrary="">Solid</value>
+      <value type="string" datatypeLibrary="">Dashed</value>
+    </choice>
+  </define>
+  <define name="ContentType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Unassigned</value>
+      <value type="string" datatypeLibrary="">GraphicType</value>
+      <value type="string" datatypeLibrary="">TextType</value>
+    </choice>
+  </define>
+  <define name="ContentsTypeSettings_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AxialShade</value>
+      <value type="string" datatypeLibrary="">RadialShade</value>
+      <value type="string" datatypeLibrary="">MeshShade</value>
+      <value type="string" datatypeLibrary="">ConstantShade</value>
+    </choice>
+  </define>
+  <define name="ContourOptionsTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">BoundingBox</value>
+      <value type="string" datatypeLibrary="">PhotoshopPath</value>
+      <value type="string" datatypeLibrary="">DetectEdges</value>
+      <value type="string" datatypeLibrary="">AlphaChannel</value>
+      <value type="string" datatypeLibrary="">GraphicFrame</value>
+      <value type="string" datatypeLibrary="">SameAsClipping</value>
+    </choice>
+  </define>
+  <define name="ConvertPageBreaks_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">PageBreak</value>
+      <value type="string" datatypeLibrary="">ColumnBreak</value>
+    </choice>
+  </define>
+  <define name="ConvertTablesOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UnformattedTable</value>
+      <value type="string" datatypeLibrary="">UnformattedTabbedText</value>
+    </choice>
+  </define>
+  <define name="CornerOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">RoundedCorner</value>
+      <value type="string" datatypeLibrary="">InverseRoundedCorner</value>
+      <value type="string" datatypeLibrary="">InsetCorner</value>
+      <value type="string" datatypeLibrary="">BevelCorner</value>
+      <value type="string" datatypeLibrary="">FancyCorner</value>
+    </choice>
+  </define>
+  <define name="CrossReferenceType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SeeOrAlsoBracket</value>
+      <value type="string" datatypeLibrary="">See</value>
+      <value type="string" datatypeLibrary="">SeeAlso</value>
+      <value type="string" datatypeLibrary="">SeeHerein</value>
+      <value type="string" datatypeLibrary="">SeeAlsoHerein</value>
+      <value type="string" datatypeLibrary="">CustomCrossReference</value>
+      <value type="string" datatypeLibrary="">CustomCrossReferenceBefore</value>
+      <value type="string" datatypeLibrary="">CustomCrossReferenceAfter</value>
+    </choice>
+  </define>
+  <define name="CustomHeightTypeEnum_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoneHeight</value>
+      <value type="string" datatypeLibrary="">DefaultHeight</value>
+      <value type="string" datatypeLibrary="">CustomFixedHeight</value>
+      <value type="string" datatypeLibrary="">CustomValueHeight</value>
+    </choice>
+  </define>
+  <define name="CustomLayoutTypeEnum_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">FloatLeft</value>
+      <value type="string" datatypeLibrary="">FloatRight</value>
+      <value type="string" datatypeLibrary="">AlignmentAndSpacing</value>
+    </choice>
+  </define>
+  <define name="CustomWidthTypeEnum_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoneWidth</value>
+      <value type="string" datatypeLibrary="">DefaultWidth</value>
+      <value type="string" datatypeLibrary="">RelativeWidth</value>
+      <value type="string" datatypeLibrary="">CustomFixedWidth</value>
+      <value type="string" datatypeLibrary="">CustomValueWidth</value>
+    </choice>
+  </define>
+  <define name="DataFormat_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ASCII</value>
+      <value type="string" datatypeLibrary="">Binary</value>
+    </choice>
+  </define>
+  <define name="DataSourceType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CommaSeparated</value>
+      <value type="string" datatypeLibrary="">TabDelimited</value>
+    </choice>
+  </define>
+  <define name="DesignOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">FromCurrentAppearance</value>
+      <value type="string" datatypeLibrary="">ToCurrentAppearance</value>
+      <value type="string" datatypeLibrary="">ToCurrentLocation</value>
+    </choice>
+  </define>
+  <define name="DiacriticPositionOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DefaultPosition</value>
+      <value type="string" datatypeLibrary="">LoosePosition</value>
+      <value type="string" datatypeLibrary="">MediumPosition</value>
+      <value type="string" datatypeLibrary="">TightPosition</value>
+      <value type="string" datatypeLibrary="">OpentypePosition</value>
+      <value type="string" datatypeLibrary="">OpentypePositionFromBaseline</value>
+    </choice>
+  </define>
+  <define name="DigitsTypeOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DefaultDigits</value>
+      <value type="string" datatypeLibrary="">ArabicDigits</value>
+      <value type="string" datatypeLibrary="">HindiDigits</value>
+      <value type="string" datatypeLibrary="">FarsiDigits</value>
+      <value type="string" datatypeLibrary="">NativeDigits</value>
+      <value type="string" datatypeLibrary="">FullFarsiDigits</value>
+      <value type="string" datatypeLibrary="">ThaiDigits</value>
+      <value type="string" datatypeLibrary="">LaoDigits</value>
+      <value type="string" datatypeLibrary="">DevanagariDigits</value>
+      <value type="string" datatypeLibrary="">BengaliDigits</value>
+      <value type="string" datatypeLibrary="">GurmukhiDigits</value>
+      <value type="string" datatypeLibrary="">GujaratiDigits</value>
+      <value type="string" datatypeLibrary="">OriyaDigits</value>
+      <value type="string" datatypeLibrary="">TamilDigits</value>
+      <value type="string" datatypeLibrary="">TeluguDigits</value>
+      <value type="string" datatypeLibrary="">KannadaDigits</value>
+      <value type="string" datatypeLibrary="">MalayalamDigits</value>
+      <value type="string" datatypeLibrary="">TibetanDigits</value>
+      <value type="string" datatypeLibrary="">KhmerDigits</value>
+      <value type="string" datatypeLibrary="">BurmeseDigits</value>
+    </choice>
+  </define>
+  <define name="DimensionsConstraints_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">FixedDimension</value>
+      <value type="string" datatypeLibrary="">FlexibleDimension</value>
+    </choice>
+  </define>
+  <define name="DisplayOrderOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">OrderByRows</value>
+      <value type="string" datatypeLibrary="">OrderByColumns</value>
+    </choice>
+  </define>
+  <define name="DisplaySettingOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">HighQuality</value>
+      <value type="string" datatypeLibrary="">Typical</value>
+      <value type="string" datatypeLibrary="">Optimized</value>
+      <value type="string" datatypeLibrary="">Default</value>
+    </choice>
+  </define>
+  <define name="DocumentIntentOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">PrintIntent</value>
+      <value type="string" datatypeLibrary="">WebIntent</value>
+      <value type="string" datatypeLibrary="">DpsIntent</value>
+    </choice>
+  </define>
+  <define name="DynamicTriggerEvents_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">OnPageLoad</value>
+      <value type="string" datatypeLibrary="">OnPageClick</value>
+      <value type="string" datatypeLibrary="">OnStateLoad</value>
+      <value type="string" datatypeLibrary="">OnClick</value>
+      <value type="string" datatypeLibrary="">OnRollover</value>
+      <value type="string" datatypeLibrary="">OnRelease</value>
+      <value type="string" datatypeLibrary="">OnRolloff</value>
+      <value type="string" datatypeLibrary="">OnSelfClick</value>
+      <value type="string" datatypeLibrary="">OnSelfRollover</value>
+    </choice>
+  </define>
+  <define name="EPubFootnotePlacement_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">FootnoteAfterStory</value>
+      <value type="string" datatypeLibrary="">FootnoteAfterParagraph</value>
+      <value type="string" datatypeLibrary="">FootnoteInsidePopup</value>
+    </choice>
+  </define>
+  <define name="EmptyFrameFittingOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">ContentToFrame</value>
+      <value type="string" datatypeLibrary="">Proportionally</value>
+      <value type="string" datatypeLibrary="">FillProportionally</value>
+    </choice>
+  </define>
+  <define name="EncodingType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">HexEncoding</value>
+      <value type="string" datatypeLibrary="">Ascii85Encoding</value>
+      <value type="string" datatypeLibrary="">Ascii64Encoding</value>
+    </choice>
+  </define>
+  <define name="EndCap_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ButtEndCap</value>
+      <value type="string" datatypeLibrary="">RoundEndCap</value>
+      <value type="string" datatypeLibrary="">ProjectingEndCap</value>
+    </choice>
+  </define>
+  <define name="EndJoin_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">MiterEndJoin</value>
+      <value type="string" datatypeLibrary="">RoundEndJoin</value>
+      <value type="string" datatypeLibrary="">BevelEndJoin</value>
+    </choice>
+  </define>
+  <define name="EpubCover_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">FirstPage</value>
+      <value type="string" datatypeLibrary="">ExternalImage</value>
+    </choice>
+  </define>
+  <define name="EpubFixedLayoutSpreadControl_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SpreadsBasedOnDoc</value>
+      <value type="string" datatypeLibrary="">PhysicalSpreads</value>
+      <value type="string" datatypeLibrary="">SyntheticSpreads</value>
+      <value type="string" datatypeLibrary="">NoSpreads</value>
+    </choice>
+  </define>
+  <define name="EpubNavigationStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoNavigation</value>
+      <value type="string" datatypeLibrary="">FilenameNavigation</value>
+      <value type="string" datatypeLibrary="">TocStyleNavigation</value>
+    </choice>
+  </define>
+  <define name="EpubVersion_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Epub2</value>
+      <value type="string" datatypeLibrary="">Epub3</value>
+    </choice>
+  </define>
+  <define name="ExportOrder_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LayoutOrder</value>
+      <value type="string" datatypeLibrary="">ArticlePanelOrder</value>
+      <value type="string" datatypeLibrary="">XMLStructureOrder</value>
+    </choice>
+  </define>
+  <define name="FeatherCornerType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Sharp</value>
+      <value type="string" datatypeLibrary="">Rounded</value>
+      <value type="string" datatypeLibrary="">Diffusion</value>
+    </choice>
+  </define>
+  <define name="FeatherMode_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Standard</value>
+    </choice>
+  </define>
+  <define name="FirstBaseline_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AscentOffset</value>
+      <value type="string" datatypeLibrary="">CapHeight</value>
+      <value type="string" datatypeLibrary="">LeadingOffset</value>
+      <value type="string" datatypeLibrary="">EmboxHeight</value>
+      <value type="string" datatypeLibrary="">XHeight</value>
+      <value type="string" datatypeLibrary="">FixedHeight</value>
+    </choice>
+  </define>
+  <define name="Fitting_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Proportional</value>
+      <value type="string" datatypeLibrary="">FitContentToFrame</value>
+      <value type="string" datatypeLibrary="">FitFrameToContent</value>
+      <value type="string" datatypeLibrary="">PreserveSizes</value>
+      <value type="string" datatypeLibrary="">FillProportional</value>
+    </choice>
+  </define>
+  <define name="FlattenerLevel_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Low</value>
+      <value type="string" datatypeLibrary="">MediumLow</value>
+      <value type="string" datatypeLibrary="">Medium</value>
+      <value type="string" datatypeLibrary="">MediumHigh</value>
+      <value type="string" datatypeLibrary="">High</value>
+    </choice>
+  </define>
+  <define name="FlipValues_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NotFlipped</value>
+      <value type="string" datatypeLibrary="">Flipped</value>
+      <value type="string" datatypeLibrary="">UndefinedFlipValue</value>
+    </choice>
+  </define>
+  <define name="Flip_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Horizontal</value>
+      <value type="string" datatypeLibrary="">Vertical</value>
+      <value type="string" datatypeLibrary="">HorizontalAndVertical</value>
+      <value type="string" datatypeLibrary="">Both</value>
+    </choice>
+  </define>
+  <define name="FloatingWindowPosition_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UpperLeft</value>
+      <value type="string" datatypeLibrary="">UpperMiddle</value>
+      <value type="string" datatypeLibrary="">UpperRight</value>
+      <value type="string" datatypeLibrary="">CenterLeft</value>
+      <value type="string" datatypeLibrary="">Center</value>
+      <value type="string" datatypeLibrary="">CenterRight</value>
+      <value type="string" datatypeLibrary="">LowerLeft</value>
+      <value type="string" datatypeLibrary="">LowerMiddle</value>
+      <value type="string" datatypeLibrary="">LowerRight</value>
+    </choice>
+  </define>
+  <define name="FloatingWindowSize_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">OneFifth</value>
+      <value type="string" datatypeLibrary="">OneFourth</value>
+      <value type="string" datatypeLibrary="">OneHalf</value>
+      <value type="string" datatypeLibrary="">Full</value>
+      <value type="string" datatypeLibrary="">Double</value>
+      <value type="string" datatypeLibrary="">Triple</value>
+      <value type="string" datatypeLibrary="">Quadruple</value>
+      <value type="string" datatypeLibrary="">Max</value>
+    </choice>
+  </define>
+  <define name="FollowShapeModeOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">LeadingEdge</value>
+      <value type="string" datatypeLibrary="">AllEdges</value>
+    </choice>
+  </define>
+  <define name="FontDownloading_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Complete</value>
+      <value type="string" datatypeLibrary="">Subset</value>
+      <value type="string" datatypeLibrary="">SubsetLarge</value>
+    </choice>
+  </define>
+  <define name="FontStatus_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Installed</value>
+      <value type="string" datatypeLibrary="">NotAvailable</value>
+      <value type="string" datatypeLibrary="">Fauxed</value>
+      <value type="string" datatypeLibrary="">Substituted</value>
+      <value type="string" datatypeLibrary="">Unknown</value>
+    </choice>
+  </define>
+  <define name="FontTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Type1</value>
+      <value type="string" datatypeLibrary="">TrueType</value>
+      <value type="string" datatypeLibrary="">CID</value>
+      <value type="string" datatypeLibrary="">ATC</value>
+      <value type="string" datatypeLibrary="">Bitmap</value>
+      <value type="string" datatypeLibrary="">OCF</value>
+      <value type="string" datatypeLibrary="">OpenTypeCFF</value>
+      <value type="string" datatypeLibrary="">OpenTypeCID</value>
+      <value type="string" datatypeLibrary="">OpenTypeTT</value>
+      <value type="string" datatypeLibrary="">Unknown</value>
+    </choice>
+  </define>
+  <define name="FootnoteFirstBaseline_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AscentOffset</value>
+      <value type="string" datatypeLibrary="">CapHeight</value>
+      <value type="string" datatypeLibrary="">LeadingOffset</value>
+      <value type="string" datatypeLibrary="">EmboxHeight</value>
+      <value type="string" datatypeLibrary="">XHeight</value>
+      <value type="string" datatypeLibrary="">FixedHeight</value>
+    </choice>
+  </define>
+  <define name="FootnoteMarkerPositioning_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NormalMarker</value>
+      <value type="string" datatypeLibrary="">SuperscriptMarker</value>
+      <value type="string" datatypeLibrary="">SubscriptMarker</value>
+      <value type="string" datatypeLibrary="">RubyMarker</value>
+    </choice>
+  </define>
+  <define name="FootnoteNumberingStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UpperRoman</value>
+      <value type="string" datatypeLibrary="">LowerRoman</value>
+      <value type="string" datatypeLibrary="">UpperLetters</value>
+      <value type="string" datatypeLibrary="">LowerLetters</value>
+      <value type="string" datatypeLibrary="">Arabic</value>
+      <value type="string" datatypeLibrary="">Symbols</value>
+      <value type="string" datatypeLibrary="">Kanji</value>
+      <value type="string" datatypeLibrary="">FullWidthArabic</value>
+      <value type="string" datatypeLibrary="">SingleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">DoubleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">Asterisks</value>
+      <value type="string" datatypeLibrary="">ArabicAlifBaTah</value>
+      <value type="string" datatypeLibrary="">ArabicAbjad</value>
+      <value type="string" datatypeLibrary="">HebrewBiblical</value>
+      <value type="string" datatypeLibrary="">HebrewNonStandard</value>
+    </choice>
+  </define>
+  <define name="FootnotePrefixSuffix_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoPrefixSuffix</value>
+      <value type="string" datatypeLibrary="">PrefixSuffixReference</value>
+      <value type="string" datatypeLibrary="">PrefixSuffixMarker</value>
+      <value type="string" datatypeLibrary="">PrefixSuffixBoth</value>
+    </choice>
+  </define>
+  <define name="FootnoteRestarting_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DontRestart</value>
+      <value type="string" datatypeLibrary="">PageRestart</value>
+      <value type="string" datatypeLibrary="">SpreadRestart</value>
+      <value type="string" datatypeLibrary="">SectionRestart</value>
+    </choice>
+  </define>
+  <define name="FrameTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TextFrameType</value>
+      <value type="string" datatypeLibrary="">FrameGridType</value>
+      <value type="string" datatypeLibrary="">Unknown</value>
+    </choice>
+  </define>
+  <define name="GIFOptionsPalette_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AdaptivePalette</value>
+      <value type="string" datatypeLibrary="">MacintoshPalette</value>
+      <value type="string" datatypeLibrary="">WebPalette</value>
+      <value type="string" datatypeLibrary="">WindowsPalette</value>
+    </choice>
+  </define>
+  <define name="GlowTechnique_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Softer</value>
+      <value type="string" datatypeLibrary="">Precise</value>
+    </choice>
+  </define>
+  <define name="GoToZoomOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">InheritZoom</value>
+      <value type="string" datatypeLibrary="">FitWindow</value>
+      <value type="string" datatypeLibrary="">FitWidth</value>
+      <value type="string" datatypeLibrary="">FitVisible</value>
+      <value type="string" datatypeLibrary="">ActualSize</value>
+    </choice>
+  </define>
+  <define name="GradientType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Linear</value>
+      <value type="string" datatypeLibrary="">Radial</value>
+    </choice>
+  </define>
+  <define name="GridAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">AlignBaseline</value>
+      <value type="string" datatypeLibrary="">AlignEmTop</value>
+      <value type="string" datatypeLibrary="">AlignEmCenter</value>
+      <value type="string" datatypeLibrary="">AlignEmBottom</value>
+      <value type="string" datatypeLibrary="">AlignICFTop</value>
+      <value type="string" datatypeLibrary="">AlignICFBottom</value>
+    </choice>
+  </define>
+  <define name="GridStartingPointOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopOutside</value>
+      <value type="string" datatypeLibrary="">TopInside</value>
+      <value type="string" datatypeLibrary="">BottomOutside</value>
+      <value type="string" datatypeLibrary="">BottomInside</value>
+      <value type="string" datatypeLibrary="">CenterVertical</value>
+      <value type="string" datatypeLibrary="">CenterHorizontal</value>
+      <value type="string" datatypeLibrary="">CenterCompletely</value>
+    </choice>
+  </define>
+  <define name="GridViewSettings_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">GridViewEnum</value>
+      <value type="string" datatypeLibrary="">ZnViewEnum</value>
+      <value type="string" datatypeLibrary="">AlignViewEnum</value>
+      <value type="string" datatypeLibrary="">GridAndZnViewEnum</value>
+    </choice>
+  </define>
+  <define name="GuideTypeOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Ruler</value>
+      <value type="string" datatypeLibrary="">Liquid</value>
+    </choice>
+  </define>
+  <define name="HeaderFooterBreakTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">InAllTextColumns</value>
+      <value type="string" datatypeLibrary="">OncePerTextFrame</value>
+      <value type="string" datatypeLibrary="">OncePerPage</value>
+    </choice>
+  </define>
+  <define name="HeaderTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">BasicLatin</value>
+      <value type="string" datatypeLibrary="">FinnishSwedish</value>
+      <value type="string" datatypeLibrary="">DanishNorwegian</value>
+      <value type="string" datatypeLibrary="">Spanish</value>
+      <value type="string" datatypeLibrary="">Croatian</value>
+      <value type="string" datatypeLibrary="">Czech</value>
+      <value type="string" datatypeLibrary="">Estonian</value>
+      <value type="string" datatypeLibrary="">Hungarian</value>
+      <value type="string" datatypeLibrary="">Latvian</value>
+      <value type="string" datatypeLibrary="">Lithuanian</value>
+      <value type="string" datatypeLibrary="">Polish</value>
+      <value type="string" datatypeLibrary="">Romanian</value>
+      <value type="string" datatypeLibrary="">Slovak</value>
+      <value type="string" datatypeLibrary="">Slovenian</value>
+      <value type="string" datatypeLibrary="">Turkish</value>
+      <value type="string" datatypeLibrary="">Belarusian</value>
+      <value type="string" datatypeLibrary="">Bulgarian</value>
+      <value type="string" datatypeLibrary="">Russian</value>
+      <value type="string" datatypeLibrary="">Ukrainian</value>
+      <value type="string" datatypeLibrary="">KoreanConsonant</value>
+      <value type="string" datatypeLibrary="">KoreanConsonantPlusVowel</value>
+      <value type="string" datatypeLibrary="">HiraganaAll</value>
+      <value type="string" datatypeLibrary="">HiraganaConsonantsOnly</value>
+      <value type="string" datatypeLibrary="">KatakanaAll</value>
+      <value type="string" datatypeLibrary="">KatakanaConsonantsOnly</value>
+      <value type="string" datatypeLibrary="">ChinesePinyin</value>
+      <value type="string" datatypeLibrary="">ChineseStrokeCount</value>
+    </choice>
+  </define>
+  <define name="HorizontalAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+      <value type="string" datatypeLibrary="">TextAlign</value>
+    </choice>
+  </define>
+  <define name="HorizontalOrVertical_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Horizontal</value>
+      <value type="string" datatypeLibrary="">Vertical</value>
+    </choice>
+  </define>
+  <define name="HyperlinkAppearanceHighlight_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Invert</value>
+      <value type="string" datatypeLibrary="">Outline</value>
+      <value type="string" datatypeLibrary="">Inset</value>
+    </choice>
+  </define>
+  <define name="HyperlinkAppearanceStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Solid</value>
+      <value type="string" datatypeLibrary="">Dashed</value>
+    </choice>
+  </define>
+  <define name="HyperlinkAppearanceWidth_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Thin</value>
+      <value type="string" datatypeLibrary="">Medium</value>
+      <value type="string" datatypeLibrary="">Thick</value>
+    </choice>
+  </define>
+  <define name="HyperlinkDestinationPageSetting_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Fixed</value>
+      <value type="string" datatypeLibrary="">FitView</value>
+      <value type="string" datatypeLibrary="">FitWindow</value>
+      <value type="string" datatypeLibrary="">FitWidth</value>
+      <value type="string" datatypeLibrary="">FitHeight</value>
+      <value type="string" datatypeLibrary="">FitVisible</value>
+      <value type="string" datatypeLibrary="">InheritZoom</value>
+    </choice>
+  </define>
+  <define name="ImageAlignmentType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AlignLeft</value>
+      <value type="string" datatypeLibrary="">AlignCenter</value>
+      <value type="string" datatypeLibrary="">AlignRight</value>
+    </choice>
+  </define>
+  <define name="ImageConversion_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Automatic</value>
+      <value type="string" datatypeLibrary="">JPEG</value>
+      <value type="string" datatypeLibrary="">GIF</value>
+      <value type="string" datatypeLibrary="">PNG</value>
+    </choice>
+  </define>
+  <define name="ImageDataTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AllImageData</value>
+      <value type="string" datatypeLibrary="">OptimizedSubsampling</value>
+      <value type="string" datatypeLibrary="">ProxyImageData</value>
+      <value type="string" datatypeLibrary="">None</value>
+    </choice>
+  </define>
+  <define name="ImageExportOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">OriginalImage</value>
+      <value type="string" datatypeLibrary="">OptimizedImage</value>
+      <value type="string" datatypeLibrary="">LinkToServer</value>
+    </choice>
+  </define>
+  <define name="ImageFormat_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">JPEG</value>
+      <value type="string" datatypeLibrary="">GIF</value>
+      <value type="string" datatypeLibrary="">PNG</value>
+    </choice>
+  </define>
+  <define name="ImagePageBreakType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">PageBreakBefore</value>
+      <value type="string" datatypeLibrary="">PageBreakAfter</value>
+      <value type="string" datatypeLibrary="">PageBreakBeforeAndAfter</value>
+    </choice>
+  </define>
+  <define name="ImageResolution_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Ppi72</value>
+      <value type="string" datatypeLibrary="">Ppi96</value>
+      <value type="string" datatypeLibrary="">Ppi150</value>
+      <value type="string" datatypeLibrary="">Ppi300</value>
+    </choice>
+  </define>
+  <define name="ImageSizeOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SizeFixed</value>
+      <value type="string" datatypeLibrary="">SizeRelativeToTextFlow</value>
+    </choice>
+  </define>
+  <define name="ImportPlatform_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Macintosh</value>
+      <value type="string" datatypeLibrary="">PC</value>
+    </choice>
+  </define>
+  <define name="ImportedPageCropOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CropContent</value>
+      <value type="string" datatypeLibrary="">CropBleed</value>
+      <value type="string" datatypeLibrary="">CropSlug</value>
+    </choice>
+  </define>
+  <define name="InCopyUIColors_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Canary</value>
+      <value type="string" datatypeLibrary="">Lemon</value>
+      <value type="string" datatypeLibrary="">Electrolyte</value>
+      <value type="string" datatypeLibrary="">Lime</value>
+      <value type="string" datatypeLibrary="">Forest</value>
+      <value type="string" datatypeLibrary="">Lichen</value>
+      <value type="string" datatypeLibrary="">Jade</value>
+      <value type="string" datatypeLibrary="">Aqua</value>
+      <value type="string" datatypeLibrary="">Cirrus</value>
+      <value type="string" datatypeLibrary="">Ether</value>
+      <value type="string" datatypeLibrary="">Slate</value>
+      <value type="string" datatypeLibrary="">Ultramarine</value>
+      <value type="string" datatypeLibrary="">Midnight</value>
+      <value type="string" datatypeLibrary="">Blueberry</value>
+      <value type="string" datatypeLibrary="">Eggplant</value>
+      <value type="string" datatypeLibrary="">Grape</value>
+      <value type="string" datatypeLibrary="">Fuchsia</value>
+      <value type="string" datatypeLibrary="">Iris</value>
+      <value type="string" datatypeLibrary="">Carnation</value>
+      <value type="string" datatypeLibrary="">Mocha</value>
+      <value type="string" datatypeLibrary="">Wheat</value>
+      <value type="string" datatypeLibrary="">Mustard</value>
+      <value type="string" datatypeLibrary="">Amber</value>
+      <value type="string" datatypeLibrary="">Cornstarch</value>
+      <value type="string" datatypeLibrary="">Powder</value>
+      <value type="string" datatypeLibrary="">Smoke</value>
+      <value type="string" datatypeLibrary="">Graphite</value>
+      <value type="string" datatypeLibrary="">Gunmetal</value>
+      <value type="string" datatypeLibrary="">LightBlue</value>
+      <value type="string" datatypeLibrary="">Red</value>
+      <value type="string" datatypeLibrary="">Green</value>
+      <value type="string" datatypeLibrary="">Blue</value>
+      <value type="string" datatypeLibrary="">Yellow</value>
+      <value type="string" datatypeLibrary="">Magenta</value>
+      <value type="string" datatypeLibrary="">Cyan</value>
+      <value type="string" datatypeLibrary="">Gray</value>
+      <value type="string" datatypeLibrary="">Black</value>
+      <value type="string" datatypeLibrary="">Orange</value>
+      <value type="string" datatypeLibrary="">DarkGreen</value>
+      <value type="string" datatypeLibrary="">Teal</value>
+      <value type="string" datatypeLibrary="">Tan</value>
+      <value type="string" datatypeLibrary="">Brown</value>
+      <value type="string" datatypeLibrary="">Violet</value>
+      <value type="string" datatypeLibrary="">Gold</value>
+      <value type="string" datatypeLibrary="">DarkBlue</value>
+      <value type="string" datatypeLibrary="">Pink</value>
+      <value type="string" datatypeLibrary="">Lavender</value>
+      <value type="string" datatypeLibrary="">BrickRed</value>
+      <value type="string" datatypeLibrary="">OliveGreen</value>
+      <value type="string" datatypeLibrary="">Peach</value>
+      <value type="string" datatypeLibrary="">Burgundy</value>
+      <value type="string" datatypeLibrary="">GrassGreen</value>
+      <value type="string" datatypeLibrary="">Ochre</value>
+      <value type="string" datatypeLibrary="">Purple</value>
+      <value type="string" datatypeLibrary="">LightGray</value>
+      <value type="string" datatypeLibrary="">Charcoal</value>
+      <value type="string" datatypeLibrary="">GridBlue</value>
+      <value type="string" datatypeLibrary="">GridOrange</value>
+      <value type="string" datatypeLibrary="">Fiesta</value>
+      <value type="string" datatypeLibrary="">LightOlive</value>
+      <value type="string" datatypeLibrary="">Lipstick</value>
+      <value type="string" datatypeLibrary="">CuteTeal</value>
+      <value type="string" datatypeLibrary="">Sulphur</value>
+      <value type="string" datatypeLibrary="">GridGreen</value>
+      <value type="string" datatypeLibrary="">White</value>
+    </choice>
+  </define>
+  <define name="IndexFormat_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RuninFormat</value>
+      <value type="string" datatypeLibrary="">NestedFormat</value>
+    </choice>
+  </define>
+  <define name="InkTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Normal</value>
+      <value type="string" datatypeLibrary="">Opaque</value>
+      <value type="string" datatypeLibrary="">Transparent</value>
+      <value type="string" datatypeLibrary="">OpaqueIgnore</value>
+    </choice>
+  </define>
+  <define name="InnerGlowSource_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CenterSourced</value>
+      <value type="string" datatypeLibrary="">EdgeSourced</value>
+    </choice>
+  </define>
+  <define name="JPEGOptionsFormat_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">BaselineEncoding</value>
+      <value type="string" datatypeLibrary="">ProgressiveEncoding</value>
+    </choice>
+  </define>
+  <define name="JPEGOptionsQuality_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Low</value>
+      <value type="string" datatypeLibrary="">Medium</value>
+      <value type="string" datatypeLibrary="">High</value>
+      <value type="string" datatypeLibrary="">Maximum</value>
+    </choice>
+  </define>
+  <define name="Justification_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+      <value type="string" datatypeLibrary="">LeftJustified</value>
+      <value type="string" datatypeLibrary="">RightJustified</value>
+      <value type="string" datatypeLibrary="">CenterJustified</value>
+      <value type="string" datatypeLibrary="">FullyJustified</value>
+      <value type="string" datatypeLibrary="">ToBindingSide</value>
+      <value type="string" datatypeLibrary="">AwayFromBindingSide</value>
+    </choice>
+  </define>
+  <define name="KashidasOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DefaultKashidas</value>
+      <value type="string" datatypeLibrary="">KashidasOff</value>
+    </choice>
+  </define>
+  <define name="KentenAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AlignKentenLeft</value>
+      <value type="string" datatypeLibrary="">AlignKentenCenter</value>
+    </choice>
+  </define>
+  <define name="KentenCharacterSet_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CharacterInput</value>
+      <value type="string" datatypeLibrary="">ShiftJIS</value>
+      <value type="string" datatypeLibrary="">JIS</value>
+      <value type="string" datatypeLibrary="">Kuten</value>
+      <value type="string" datatypeLibrary="">Unicode</value>
+    </choice>
+  </define>
+  <define name="KentenCharacter_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">KentenSesameDot</value>
+      <value type="string" datatypeLibrary="">KentenWhiteSesameDot</value>
+      <value type="string" datatypeLibrary="">KentenBlackCircle</value>
+      <value type="string" datatypeLibrary="">KentenWhiteCircle</value>
+      <value type="string" datatypeLibrary="">KentenBlackTriangle</value>
+      <value type="string" datatypeLibrary="">KentenWhiteTriangle</value>
+      <value type="string" datatypeLibrary="">KentenBullseye</value>
+      <value type="string" datatypeLibrary="">KentenFisheye</value>
+      <value type="string" datatypeLibrary="">KentenSmallBlackCircle</value>
+      <value type="string" datatypeLibrary="">KentenSmallWhiteCircle</value>
+      <value type="string" datatypeLibrary="">Custom</value>
+    </choice>
+  </define>
+  <define name="KinsokuHangTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">KinsokuHangRegular</value>
+      <value type="string" datatypeLibrary="">KinsokuHangForce</value>
+    </choice>
+  </define>
+  <define name="KinsokuSet_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Nothing</value>
+      <value type="string" datatypeLibrary="">HardKinsoku</value>
+      <value type="string" datatypeLibrary="">SoftKinsoku</value>
+      <value type="string" datatypeLibrary="">KoreanKinsoku</value>
+      <value type="string" datatypeLibrary="">SimplifiedChineseKinsoku</value>
+      <value type="string" datatypeLibrary="">TraditionalChineseKinsoku</value>
+    </choice>
+  </define>
+  <define name="KinsokuType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">KinsokuPushInFirst</value>
+      <value type="string" datatypeLibrary="">KinsokuPushOutFirst</value>
+      <value type="string" datatypeLibrary="">KinsokuPushOutOnly</value>
+      <value type="string" datatypeLibrary="">KinsokuPrioritizeAdjustmentAmount</value>
+    </choice>
+  </define>
+  <define name="LayoutRuleOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Off</value>
+      <value type="string" datatypeLibrary="">Scale</value>
+      <value type="string" datatypeLibrary="">Recenter</value>
+      <value type="string" datatypeLibrary="">GuideBased</value>
+      <value type="string" datatypeLibrary="">ObjectBased</value>
+      <value type="string" datatypeLibrary="">UseMaster</value>
+      <value type="string" datatypeLibrary="">PreserveExisting</value>
+    </choice>
+  </define>
+  <define name="LeadingModel_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeadingModelRoman</value>
+      <value type="string" datatypeLibrary="">LeadingModelAkiBelow</value>
+      <value type="string" datatypeLibrary="">LeadingModelAkiAbove</value>
+      <value type="string" datatypeLibrary="">LeadingModelCenter</value>
+      <value type="string" datatypeLibrary="">LeadingModelCenterDown</value>
+    </choice>
+  </define>
+  <define name="Leading_EnumValue">
+    <value type="string" datatypeLibrary="">Auto</value>
+  </define>
+  <define name="LineAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftOrTopLineAlign</value>
+      <value type="string" datatypeLibrary="">CenterLineAlign</value>
+      <value type="string" datatypeLibrary="">RightOrBottomLineAlign</value>
+      <value type="string" datatypeLibrary="">LeftOrTopLineJustify</value>
+      <value type="string" datatypeLibrary="">CenterLineJustify</value>
+      <value type="string" datatypeLibrary="">RightOrBottomLineJustify</value>
+      <value type="string" datatypeLibrary="">FullLineJustify</value>
+    </choice>
+  </define>
+  <define name="LinkExportPolicy_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoAutoExport</value>
+      <value type="string" datatypeLibrary="">ExportOnModify</value>
+      <value type="string" datatypeLibrary="">ExportOnClose</value>
+      <value type="string" datatypeLibrary="">ExportOnSave</value>
+    </choice>
+  </define>
+  <define name="LinkImportPolicy_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoAutoImport</value>
+      <value type="string" datatypeLibrary="">ImportOnModify</value>
+    </choice>
+  </define>
+  <define name="LinkResourceStoreState_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Normal</value>
+      <value type="string" datatypeLibrary="">Cached</value>
+      <value type="string" datatypeLibrary="">Contained</value>
+      <value type="string" datatypeLibrary="">Embedded</value>
+    </choice>
+  </define>
+  <define name="ListAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+    </choice>
+  </define>
+  <define name="ListType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NoList</value>
+      <value type="string" datatypeLibrary="">BulletList</value>
+      <value type="string" datatypeLibrary="">NumberedList</value>
+    </choice>
+  </define>
+  <define name="LockStateValues_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">UnmanagedStory</value>
+      <value type="string" datatypeLibrary="">CheckedInStory</value>
+      <value type="string" datatypeLibrary="">CheckedOutStory</value>
+      <value type="string" datatypeLibrary="">LockedStory</value>
+      <value type="string" datatypeLibrary="">EmbeddedStory</value>
+      <value type="string" datatypeLibrary="">MissingLockState</value>
+      <value type="string" datatypeLibrary="">MixedLockState</value>
+    </choice>
+  </define>
+  <define name="MapType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">StyleMappingRule</value>
+      <value type="string" datatypeLibrary="">GroupMappingRule</value>
+      <value type="string" datatypeLibrary="">StyleToGroupMappingRule</value>
+      <value type="string" datatypeLibrary="">GroupToStyleMappingRule</value>
+    </choice>
+  </define>
+  <define name="MarkLineWeight_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">P125pt</value>
+      <value type="string" datatypeLibrary="">P25pt</value>
+      <value type="string" datatypeLibrary="">P50pt</value>
+      <value type="string" datatypeLibrary="">P05mm</value>
+      <value type="string" datatypeLibrary="">P07mm</value>
+      <value type="string" datatypeLibrary="">P10mm</value>
+      <value type="string" datatypeLibrary="">P15mm</value>
+      <value type="string" datatypeLibrary="">P20mm</value>
+      <value type="string" datatypeLibrary="">P30mm</value>
+    </choice>
+  </define>
+  <define name="MarkTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Default</value>
+      <value type="string" datatypeLibrary="">JMarkWithCircle</value>
+      <value type="string" datatypeLibrary="">JMarkWithoutCircle</value>
+    </choice>
+  </define>
+  <define name="MeasurementUnits_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Points</value>
+      <value type="string" datatypeLibrary="">Picas</value>
+      <value type="string" datatypeLibrary="">Inches</value>
+      <value type="string" datatypeLibrary="">InchesDecimal</value>
+      <value type="string" datatypeLibrary="">Millimeters</value>
+      <value type="string" datatypeLibrary="">Centimeters</value>
+      <value type="string" datatypeLibrary="">Ciceros</value>
+      <value type="string" datatypeLibrary="">Custom</value>
+      <value type="string" datatypeLibrary="">Agates</value>
+      <value type="string" datatypeLibrary="">U</value>
+      <value type="string" datatypeLibrary="">Bai</value>
+      <value type="string" datatypeLibrary="">Mils</value>
+      <value type="string" datatypeLibrary="">Pixels</value>
+      <value type="string" datatypeLibrary="">Q</value>
+      <value type="string" datatypeLibrary="">Ha</value>
+      <value type="string" datatypeLibrary="">AmericanPoints</value>
+    </choice>
+  </define>
+  <define name="MojikumiTableDefaults_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Nothing</value>
+      <value type="string" datatypeLibrary="">LineEndAllOneHalfEmEnum</value>
+      <value type="string" datatypeLibrary="">OneEmIndentLineEndUkeOneHalfEmEnum</value>
+      <value type="string" datatypeLibrary="">OneOrOneHalfEmIndentLineEndUkeOneHalfEmEnum</value>
+      <value type="string" datatypeLibrary="">OneOrOneHalfEmIndentLineEndAllOneEmEnum</value>
+      <value type="string" datatypeLibrary="">OneEmIndentLineEndAllOneEmEnum</value>
+      <value type="string" datatypeLibrary="">OneEmIndentLineEndAllNoFloatEnum</value>
+      <value type="string" datatypeLibrary="">OneEmIndentLineEndUkeNoFloatEnum</value>
+      <value type="string" datatypeLibrary="">OneOrOneHalfEmIndentLineEndUkeNoFloatEnum</value>
+      <value type="string" datatypeLibrary="">OneEmIndentLineEndAllOneHalfEmEnum</value>
+      <value type="string" datatypeLibrary="">LineEndAllOneEmEnum</value>
+      <value type="string" datatypeLibrary="">LineEndUkeNoFloatEnum</value>
+      <value type="string" datatypeLibrary="">OneOrOneHalfEmIndentLineEndPeriodOneEmEnum</value>
+      <value type="string" datatypeLibrary="">OneEmIndentLineEndPeriodOneEmEnum</value>
+      <value type="string" datatypeLibrary="">LineEndPeriodOneEmEnum</value>
+      <value type="string" datatypeLibrary="">TradChineseDefault</value>
+      <value type="string" datatypeLibrary="">SimpChineseDefault</value>
+    </choice>
+  </define>
+  <define name="MoviePlayOperations_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Play</value>
+      <value type="string" datatypeLibrary="">PlayFromNavigationPoint</value>
+      <value type="string" datatypeLibrary="">Stop</value>
+      <value type="string" datatypeLibrary="">Pause</value>
+      <value type="string" datatypeLibrary="">Resume</value>
+      <value type="string" datatypeLibrary="">StopAll</value>
+    </choice>
+  </define>
+  <define name="NestedStyleDelimiters_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Sentence</value>
+      <value type="string" datatypeLibrary="">AnyWord</value>
+      <value type="string" datatypeLibrary="">AnyCharacter</value>
+      <value type="string" datatypeLibrary="">Letters</value>
+      <value type="string" datatypeLibrary="">Digits</value>
+      <value type="string" datatypeLibrary="">Tabs</value>
+      <value type="string" datatypeLibrary="">InlineGraphic</value>
+      <value type="string" datatypeLibrary="">Dropcap</value>
+      <value type="string" datatypeLibrary="">ForcedLineBreak</value>
+      <value type="string" datatypeLibrary="">EndNestedStyle</value>
+      <value type="string" datatypeLibrary="">IndentHereTab</value>
+      <value type="string" datatypeLibrary="">EmSpace</value>
+      <value type="string" datatypeLibrary="">EnSpace</value>
+      <value type="string" datatypeLibrary="">NonbreakingSpace</value>
+      <value type="string" datatypeLibrary="">AutoPageNumber</value>
+      <value type="string" datatypeLibrary="">SectionMarker</value>
+      <value type="string" datatypeLibrary="">Repeat</value>
+    </choice>
+  </define>
+  <define name="NothingEnum_EnumValue">
+    <value type="string" datatypeLibrary="">Nothing</value>
+  </define>
+  <define name="NumberedListExportOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">OrderedList</value>
+      <value type="string" datatypeLibrary="">AsText</value>
+    </choice>
+  </define>
+  <define name="NumberedParagraphsOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">IncludeFullParagraph</value>
+      <value type="string" datatypeLibrary="">IncludeNumbersOnly</value>
+      <value type="string" datatypeLibrary="">ExcludeNumbers</value>
+    </choice>
+  </define>
+  <define name="NumberingStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UpperRoman</value>
+      <value type="string" datatypeLibrary="">LowerRoman</value>
+      <value type="string" datatypeLibrary="">UpperLetters</value>
+      <value type="string" datatypeLibrary="">LowerLetters</value>
+      <value type="string" datatypeLibrary="">Arabic</value>
+      <value type="string" datatypeLibrary="">Kanji</value>
+      <value type="string" datatypeLibrary="">KatakanaModern</value>
+      <value type="string" datatypeLibrary="">KatakanaTraditional</value>
+      <value type="string" datatypeLibrary="">FormatNone</value>
+      <value type="string" datatypeLibrary="">SingleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">ArabicAlifBaTah</value>
+      <value type="string" datatypeLibrary="">ArabicAbjad</value>
+      <value type="string" datatypeLibrary="">HebrewBiblical</value>
+      <value type="string" datatypeLibrary="">HebrewNonStandard</value>
+      <value type="string" datatypeLibrary="">DoubleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">TripleLeadingZeros</value>
+    </choice>
+  </define>
+  <define name="OTFFigureStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TabularLining</value>
+      <value type="string" datatypeLibrary="">ProportionalOldstyle</value>
+      <value type="string" datatypeLibrary="">ProportionalLining</value>
+      <value type="string" datatypeLibrary="">TabularOldstyle</value>
+      <value type="string" datatypeLibrary="">Default</value>
+    </choice>
+  </define>
+  <define name="OutlineJoin_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">MiterEndJoin</value>
+      <value type="string" datatypeLibrary="">RoundEndJoin</value>
+      <value type="string" datatypeLibrary="">BevelEndJoin</value>
+    </choice>
+  </define>
+  <define name="PDFCrop_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CropArt</value>
+      <value type="string" datatypeLibrary="">CropPDF</value>
+      <value type="string" datatypeLibrary="">CropTrim</value>
+      <value type="string" datatypeLibrary="">CropBleed</value>
+      <value type="string" datatypeLibrary="">CropMedia</value>
+      <value type="string" datatypeLibrary="">CropContentVisibleLayers</value>
+      <value type="string" datatypeLibrary="">CropContentAllLayers</value>
+      <value type="string" datatypeLibrary="">CropContent</value>
+    </choice>
+  </define>
+  <define name="PPDValues_EnumValue">
+    <value type="string" datatypeLibrary="">DeviceIndependent</value>
+  </define>
+  <define name="PageBindingOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Default</value>
+      <value type="string" datatypeLibrary="">RightToLeft</value>
+      <value type="string" datatypeLibrary="">LeftToRight</value>
+    </choice>
+  </define>
+  <define name="PageColorOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Nothing</value>
+      <value type="string" datatypeLibrary="">UseMasterColor</value>
+    </choice>
+  </define>
+  <define name="PageNumberPosition_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AfterEntry</value>
+      <value type="string" datatypeLibrary="">BeforeEntry</value>
+      <value type="string" datatypeLibrary="">None</value>
+    </choice>
+  </define>
+  <define name="PageNumberStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UpperRoman</value>
+      <value type="string" datatypeLibrary="">LowerRoman</value>
+      <value type="string" datatypeLibrary="">UpperLetters</value>
+      <value type="string" datatypeLibrary="">LowerLetters</value>
+      <value type="string" datatypeLibrary="">Arabic</value>
+      <value type="string" datatypeLibrary="">Kanji</value>
+      <value type="string" datatypeLibrary="">DoubleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">TripleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">ArabicAlifBaTah</value>
+      <value type="string" datatypeLibrary="">ArabicAbjad</value>
+      <value type="string" datatypeLibrary="">HebrewBiblical</value>
+      <value type="string" datatypeLibrary="">HebrewNonStandard</value>
+      <value type="string" datatypeLibrary="">SingleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">FullWidthArabic</value>
+    </choice>
+  </define>
+  <define name="PageNumberTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AutoPageNumber</value>
+      <value type="string" datatypeLibrary="">NextPageNumber</value>
+      <value type="string" datatypeLibrary="">PreviousPageNumber</value>
+      <value type="string" datatypeLibrary="">TextVariable</value>
+    </choice>
+  </define>
+  <define name="PagePositions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UpperLeft</value>
+      <value type="string" datatypeLibrary="">CenterHorizontally</value>
+      <value type="string" datatypeLibrary="">CenterVertically</value>
+      <value type="string" datatypeLibrary="">Centered</value>
+    </choice>
+  </define>
+  <define name="PageRangeFormat_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ExportAllPages</value>
+      <value type="string" datatypeLibrary="">ExportPageRange</value>
+    </choice>
+  </define>
+  <define name="PageRange_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AllPages</value>
+      <value type="string" datatypeLibrary="">SelectedItems</value>
+    </choice>
+  </define>
+  <define name="PageReferenceType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CurrentPage</value>
+      <value type="string" datatypeLibrary="">ToNextStyleChange</value>
+      <value type="string" datatypeLibrary="">ToNextUseOfStyle</value>
+      <value type="string" datatypeLibrary="">ToEndOfStory</value>
+      <value type="string" datatypeLibrary="">ToEndOfDocument</value>
+      <value type="string" datatypeLibrary="">ToEndOfSection</value>
+      <value type="string" datatypeLibrary="">ForNextNParagraphs</value>
+      <value type="string" datatypeLibrary="">ForNextNPages</value>
+      <value type="string" datatypeLibrary="">SuppressPageNumbers</value>
+    </choice>
+  </define>
+  <define name="PageTransitionDirectionOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">NotApplicable</value>
+      <value type="string" datatypeLibrary="">Down</value>
+      <value type="string" datatypeLibrary="">RightToLeft</value>
+      <value type="string" datatypeLibrary="">LeftDown</value>
+      <value type="string" datatypeLibrary="">LeftUp</value>
+      <value type="string" datatypeLibrary="">LeftToRight</value>
+      <value type="string" datatypeLibrary="">RightDown</value>
+      <value type="string" datatypeLibrary="">RightUp</value>
+      <value type="string" datatypeLibrary="">Up</value>
+      <value type="string" datatypeLibrary="">In</value>
+      <value type="string" datatypeLibrary="">Out</value>
+      <value type="string" datatypeLibrary="">Horizontal</value>
+      <value type="string" datatypeLibrary="">Vertical</value>
+      <value type="string" datatypeLibrary="">HorizontalIn</value>
+      <value type="string" datatypeLibrary="">HorizontalOut</value>
+      <value type="string" datatypeLibrary="">VerticalIn</value>
+      <value type="string" datatypeLibrary="">VerticalOut</value>
+    </choice>
+  </define>
+  <define name="PageTransitionDurationOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Fast</value>
+      <value type="string" datatypeLibrary="">Medium</value>
+      <value type="string" datatypeLibrary="">Slow</value>
+    </choice>
+  </define>
+  <define name="PageTransitionTypeOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">BlindsTransition</value>
+      <value type="string" datatypeLibrary="">BoxTransition</value>
+      <value type="string" datatypeLibrary="">CombTransition</value>
+      <value type="string" datatypeLibrary="">CoverTransition</value>
+      <value type="string" datatypeLibrary="">DissolveTransition</value>
+      <value type="string" datatypeLibrary="">FadeTransition</value>
+      <value type="string" datatypeLibrary="">PageTurnTransition</value>
+      <value type="string" datatypeLibrary="">PushTransition</value>
+      <value type="string" datatypeLibrary="">SplitTransition</value>
+      <value type="string" datatypeLibrary="">UncoverTransition</value>
+      <value type="string" datatypeLibrary="">WipeTransition</value>
+      <value type="string" datatypeLibrary="">ZoomInTransition</value>
+      <value type="string" datatypeLibrary="">ZoomOutTransition</value>
+    </choice>
+  </define>
+  <define name="PaginationOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AutoPaginate</value>
+      <value type="string" datatypeLibrary="">FromLastPage</value>
+    </choice>
+  </define>
+  <define name="PaperSize_EnumValue">
+    <value type="string" datatypeLibrary="">Auto</value>
+  </define>
+  <define name="PaperSizes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DefinedByDriver</value>
+      <value type="string" datatypeLibrary="">Custom</value>
+    </choice>
+  </define>
+  <define name="ParagraphBreakTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Anywhere</value>
+      <value type="string" datatypeLibrary="">NextColumn</value>
+      <value type="string" datatypeLibrary="">NextFrame</value>
+      <value type="string" datatypeLibrary="">NextPage</value>
+      <value type="string" datatypeLibrary="">NextOddPage</value>
+      <value type="string" datatypeLibrary="">NextEvenPage</value>
+    </choice>
+  </define>
+  <define name="ParagraphDirectionOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftToRightDirection</value>
+      <value type="string" datatypeLibrary="">RightToLeftDirection</value>
+    </choice>
+  </define>
+  <define name="ParagraphJustificationOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DefaultJustification</value>
+      <value type="string" datatypeLibrary="">ArabicJustification</value>
+      <value type="string" datatypeLibrary="">NaskhJustification</value>
+      <value type="string" datatypeLibrary="">NaskhTatweelJustification</value>
+      <value type="string" datatypeLibrary="">NaskhKashidaJustification</value>
+      <value type="string" datatypeLibrary="">NaskhTatweelJustificationFrac</value>
+      <value type="string" datatypeLibrary="">NaskhKashidaJustificationFrac</value>
+    </choice>
+  </define>
+  <define name="PathTypeAlignments_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopPathAlignment</value>
+      <value type="string" datatypeLibrary="">BottomPathAlignment</value>
+      <value type="string" datatypeLibrary="">CenterPathAlignment</value>
+    </choice>
+  </define>
+  <define name="PlacedVectorProfilePolicy_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">IgnoreAll</value>
+      <value type="string" datatypeLibrary="">IgnoreOutputIntent</value>
+      <value type="string" datatypeLibrary="">HonorAllProfiles</value>
+    </choice>
+  </define>
+  <define name="PlayMode_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Once</value>
+      <value type="string" datatypeLibrary="">StayOpen</value>
+      <value type="string" datatypeLibrary="">RepeatPlay</value>
+    </choice>
+  </define>
+  <define name="PlayOperations_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Play</value>
+      <value type="string" datatypeLibrary="">Stop</value>
+      <value type="string" datatypeLibrary="">Pause</value>
+      <value type="string" datatypeLibrary="">Resume</value>
+      <value type="string" datatypeLibrary="">StopAll</value>
+    </choice>
+  </define>
+  <define name="Position_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Normal</value>
+      <value type="string" datatypeLibrary="">Superscript</value>
+      <value type="string" datatypeLibrary="">Subscript</value>
+      <value type="string" datatypeLibrary="">OTSuperscript</value>
+      <value type="string" datatypeLibrary="">OTSubscript</value>
+      <value type="string" datatypeLibrary="">OTNumerator</value>
+      <value type="string" datatypeLibrary="">OTDenominator</value>
+    </choice>
+  </define>
+  <define name="PositionalForms_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Calculate</value>
+      <value type="string" datatypeLibrary="">Initial</value>
+      <value type="string" datatypeLibrary="">Medial</value>
+      <value type="string" datatypeLibrary="">Final</value>
+      <value type="string" datatypeLibrary="">Isolated</value>
+    </choice>
+  </define>
+  <define name="PostScriptLevels_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Level2</value>
+      <value type="string" datatypeLibrary="">Level3</value>
+    </choice>
+  </define>
+  <define name="PreflightRuleFlag_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RuleIsDisabled</value>
+      <value type="string" datatypeLibrary="">ReturnAsError</value>
+      <value type="string" datatypeLibrary="">ReturnAsWarning</value>
+      <value type="string" datatypeLibrary="">ReturnAsInformational</value>
+    </choice>
+  </define>
+  <define name="PrintLayerOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AllLayers</value>
+      <value type="string" datatypeLibrary="">VisibleLayers</value>
+      <value type="string" datatypeLibrary="">VisiblePrintableLayers</value>
+    </choice>
+  </define>
+  <define name="PrintPageOrientation_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Portrait</value>
+      <value type="string" datatypeLibrary="">Landscape</value>
+      <value type="string" datatypeLibrary="">ReversePortrait</value>
+      <value type="string" datatypeLibrary="">ReverseLandscape</value>
+    </choice>
+  </define>
+  <define name="PrinterPresetTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Default</value>
+      <value type="string" datatypeLibrary="">Custom</value>
+    </choice>
+  </define>
+  <define name="Printer_EnumValue">
+    <value type="string" datatypeLibrary="">PostscriptFile</value>
+  </define>
+  <define name="Profile_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">PostScriptCMS</value>
+      <value type="string" datatypeLibrary="">UseDocument</value>
+      <value type="string" datatypeLibrary="">Working</value>
+      <value type="string" datatypeLibrary="">NoCMS</value>
+    </choice>
+  </define>
+  <define name="RenderingIntent_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UseColorSettings</value>
+      <value type="string" datatypeLibrary="">Perceptual</value>
+      <value type="string" datatypeLibrary="">Saturation</value>
+      <value type="string" datatypeLibrary="">RelativeColorimetric</value>
+      <value type="string" datatypeLibrary="">AbsoluteColorimetric</value>
+    </choice>
+  </define>
+  <define name="ResolveStyleClash_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ResolveClashUseExisting</value>
+      <value type="string" datatypeLibrary="">ResolveClashAutoRename</value>
+      <value type="string" datatypeLibrary="">ResolveClashUseNew</value>
+    </choice>
+  </define>
+  <define name="RestartPolicy_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AnyPreviousLevel</value>
+      <value type="string" datatypeLibrary="">AfterSpecificLevel</value>
+      <value type="string" datatypeLibrary="">RangeOfLevels</value>
+    </choice>
+  </define>
+  <define name="RubyAlignments_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RubyLeft</value>
+      <value type="string" datatypeLibrary="">RubyCenter</value>
+      <value type="string" datatypeLibrary="">RubyRight</value>
+      <value type="string" datatypeLibrary="">RubyFullJustify</value>
+      <value type="string" datatypeLibrary="">RubyJIS</value>
+      <value type="string" datatypeLibrary="">RubyEqualAki</value>
+      <value type="string" datatypeLibrary="">Ruby1Aki</value>
+    </choice>
+  </define>
+  <define name="RubyKentenPosition_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AboveRight</value>
+      <value type="string" datatypeLibrary="">BelowLeft</value>
+    </choice>
+  </define>
+  <define name="RubyOverhang_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">RubyOverhangOneRuby</value>
+      <value type="string" datatypeLibrary="">RubyOverhangHalfRuby</value>
+      <value type="string" datatypeLibrary="">RubyOverhangOneChar</value>
+      <value type="string" datatypeLibrary="">RubyOverhangHalfChar</value>
+      <value type="string" datatypeLibrary="">RubyOverhangNoLimit</value>
+    </choice>
+  </define>
+  <define name="RubyParentSpacing_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RubyParentNoAdjustment</value>
+      <value type="string" datatypeLibrary="">RubyParentBothSides</value>
+      <value type="string" datatypeLibrary="">RubyParent121Aki</value>
+      <value type="string" datatypeLibrary="">RubyParentEqualAki</value>
+      <value type="string" datatypeLibrary="">RubyParentFullJustify</value>
+    </choice>
+  </define>
+  <define name="RubyTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">GroupRuby</value>
+      <value type="string" datatypeLibrary="">PerCharacterRuby</value>
+    </choice>
+  </define>
+  <define name="RuleDataType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">IntegerDataType</value>
+      <value type="string" datatypeLibrary="">ShortIntegerDataType</value>
+      <value type="string" datatypeLibrary="">RealDataType</value>
+      <value type="string" datatypeLibrary="">StringDataType</value>
+      <value type="string" datatypeLibrary="">BooleanDataType</value>
+      <value type="string" datatypeLibrary="">ObjectDataType</value>
+      <value type="string" datatypeLibrary="">ListDataType</value>
+    </choice>
+  </define>
+  <define name="RuleWidth_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TextWidth</value>
+      <value type="string" datatypeLibrary="">ColumnWidth</value>
+    </choice>
+  </define>
+  <define name="RulerOrigin_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SpreadOrigin</value>
+      <value type="string" datatypeLibrary="">PageOrigin</value>
+      <value type="string" datatypeLibrary="">SpineOrigin</value>
+    </choice>
+  </define>
+  <define name="ScaleModes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ScaleWidthHeight</value>
+      <value type="string" datatypeLibrary="">ScaleToFit</value>
+    </choice>
+  </define>
+  <define name="Screeening_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Default</value>
+      <value type="string" datatypeLibrary="">Custom</value>
+    </choice>
+  </define>
+  <define name="SearchStrategies_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">FirstOnPage</value>
+      <value type="string" datatypeLibrary="">LastOnPage</value>
+    </choice>
+  </define>
+  <define name="Sequences_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">All</value>
+      <value type="string" datatypeLibrary="">Odd</value>
+      <value type="string" datatypeLibrary="">Even</value>
+    </choice>
+  </define>
+  <define name="ShadowMode_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Drop</value>
+    </choice>
+  </define>
+  <define name="SignatureSizeOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SignatureSize4</value>
+      <value type="string" datatypeLibrary="">SignatureSize8</value>
+      <value type="string" datatypeLibrary="">SignatureSize12</value>
+      <value type="string" datatypeLibrary="">SignatureSize16</value>
+      <value type="string" datatypeLibrary="">SignatureSize32</value>
+    </choice>
+  </define>
+  <define name="SingleWordJustification_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+      <value type="string" datatypeLibrary="">FullyJustified</value>
+    </choice>
+  </define>
+  <define name="SnapshotBlendingModes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">IgnoreLayoutSnapshots</value>
+      <value type="string" datatypeLibrary="">UseNearestSnapshot</value>
+      <value type="string" datatypeLibrary="">LimitedSnapshotBlending</value>
+      <value type="string" datatypeLibrary="">FullSnapshotBlending</value>
+    </choice>
+  </define>
+  <define name="SourceSpaces_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UseDocument</value>
+      <value type="string" datatypeLibrary="">ProofSpace</value>
+    </choice>
+  </define>
+  <define name="SourceType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SourceCustom</value>
+      <value type="string" datatypeLibrary="">SourceXMPTitle</value>
+      <value type="string" datatypeLibrary="">SourceXMPDescription</value>
+      <value type="string" datatypeLibrary="">SourceXMPHeadline</value>
+      <value type="string" datatypeLibrary="">SourceXMPOther</value>
+      <value type="string" datatypeLibrary="">SourceXMLStructure</value>
+    </choice>
+  </define>
+  <define name="SpaceUnitType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CssEm</value>
+      <value type="string" datatypeLibrary="">CssPixel</value>
+    </choice>
+  </define>
+  <define name="SpanColumnCountOptions_EnumValue">
+    <value type="string" datatypeLibrary="">All</value>
+  </define>
+  <define name="SpanColumnTypeOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">SingleColumn</value>
+      <value type="string" datatypeLibrary="">SpanColumns</value>
+      <value type="string" datatypeLibrary="">SplitColumns</value>
+    </choice>
+  </define>
+  <define name="SpecialCharacters_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AutoPageNumber</value>
+      <value type="string" datatypeLibrary="">NextPageNumber</value>
+      <value type="string" datatypeLibrary="">PreviousPageNumber</value>
+      <value type="string" datatypeLibrary="">SectionMarker</value>
+      <value type="string" datatypeLibrary="">BulletCharacter</value>
+      <value type="string" datatypeLibrary="">CopyrightSymbol</value>
+      <value type="string" datatypeLibrary="">DegreeSymbol</value>
+      <value type="string" datatypeLibrary="">EllipsisCharacter</value>
+      <value type="string" datatypeLibrary="">ForcedLineBreak</value>
+      <value type="string" datatypeLibrary="">ParagraphSymbol</value>
+      <value type="string" datatypeLibrary="">RegisteredTrademark</value>
+      <value type="string" datatypeLibrary="">SectionSymbol</value>
+      <value type="string" datatypeLibrary="">TrademarkSymbol</value>
+      <value type="string" datatypeLibrary="">RightIndentTab</value>
+      <value type="string" datatypeLibrary="">IndentHereTab</value>
+      <value type="string" datatypeLibrary="">EmDash</value>
+      <value type="string" datatypeLibrary="">EnDash</value>
+      <value type="string" datatypeLibrary="">DiscretionaryHyphen</value>
+      <value type="string" datatypeLibrary="">NonbreakingHyphen</value>
+      <value type="string" datatypeLibrary="">EndNestedStyle</value>
+      <value type="string" datatypeLibrary="">DoubleLeftQuote</value>
+      <value type="string" datatypeLibrary="">DoubleRightQuote</value>
+      <value type="string" datatypeLibrary="">SingleLeftQuote</value>
+      <value type="string" datatypeLibrary="">SingleRightQuote</value>
+      <value type="string" datatypeLibrary="">EmSpace</value>
+      <value type="string" datatypeLibrary="">EnSpace</value>
+      <value type="string" datatypeLibrary="">FlushSpace</value>
+      <value type="string" datatypeLibrary="">HairSpace</value>
+      <value type="string" datatypeLibrary="">NonbreakingSpace</value>
+      <value type="string" datatypeLibrary="">ThinSpace</value>
+      <value type="string" datatypeLibrary="">FigureSpace</value>
+      <value type="string" datatypeLibrary="">PunctuationSpace</value>
+      <value type="string" datatypeLibrary="">ColumnBreak</value>
+      <value type="string" datatypeLibrary="">FrameBreak</value>
+      <value type="string" datatypeLibrary="">PageBreak</value>
+      <value type="string" datatypeLibrary="">OddPageBreak</value>
+      <value type="string" datatypeLibrary="">EvenPageBreak</value>
+      <value type="string" datatypeLibrary="">FootnoteSymbol</value>
+      <value type="string" datatypeLibrary="">LeftToRightEmbedding</value>
+      <value type="string" datatypeLibrary="">RightToLeftEmbedding</value>
+      <value type="string" datatypeLibrary="">PopDirectionalFormatting</value>
+      <value type="string" datatypeLibrary="">LeftToRightOverride</value>
+      <value type="string" datatypeLibrary="">RightToLeftOverride</value>
+      <value type="string" datatypeLibrary="">DottedCircle</value>
+      <value type="string" datatypeLibrary="">ZeroWidthJoiner</value>
+      <value type="string" datatypeLibrary="">TextVariable</value>
+      <value type="string" datatypeLibrary="">SingleStraightQuote</value>
+      <value type="string" datatypeLibrary="">DoubleStraightQuote</value>
+      <value type="string" datatypeLibrary="">DiscretionaryLineBreak</value>
+      <value type="string" datatypeLibrary="">ZeroWidthNonjoiner</value>
+      <value type="string" datatypeLibrary="">ThirdSpace</value>
+      <value type="string" datatypeLibrary="">QuarterSpace</value>
+      <value type="string" datatypeLibrary="">SixthSpace</value>
+      <value type="string" datatypeLibrary="">FixedWidthNonbreakingSpace</value>
+      <value type="string" datatypeLibrary="">HebrewMaqaf</value>
+      <value type="string" datatypeLibrary="">HebrewGeresh</value>
+      <value type="string" datatypeLibrary="">HebrewGershayim</value>
+      <value type="string" datatypeLibrary="">ArabicKashida</value>
+      <value type="string" datatypeLibrary="">ArabicComma</value>
+      <value type="string" datatypeLibrary="">ArabicSemicolon</value>
+      <value type="string" datatypeLibrary="">ArabicQuestionMark</value>
+      <value type="string" datatypeLibrary="">LeftToRightMark</value>
+      <value type="string" datatypeLibrary="">RightToLeftMark</value>
+      <value type="string" datatypeLibrary="">HebrewSofPasuk</value>
+    </choice>
+  </define>
+  <define name="SpreadFlattenerLevel_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Default</value>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Custom</value>
+    </choice>
+  </define>
+  <define name="StartParagraph_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Anywhere</value>
+      <value type="string" datatypeLibrary="">NextColumn</value>
+      <value type="string" datatypeLibrary="">NextFrame</value>
+      <value type="string" datatypeLibrary="">NextPage</value>
+      <value type="string" datatypeLibrary="">NextOddPage</value>
+      <value type="string" datatypeLibrary="">NextEvenPage</value>
+    </choice>
+  </define>
+  <define name="StateTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Up</value>
+      <value type="string" datatypeLibrary="">Rollover</value>
+      <value type="string" datatypeLibrary="">Down</value>
+      <value type="string" datatypeLibrary="">UpOn</value>
+      <value type="string" datatypeLibrary="">RolloverOn</value>
+      <value type="string" datatypeLibrary="">DownOn</value>
+      <value type="string" datatypeLibrary="">UpOff</value>
+      <value type="string" datatypeLibrary="">RolloverOff</value>
+      <value type="string" datatypeLibrary="">DownOff</value>
+    </choice>
+  </define>
+  <define name="StoryDirectionOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftToRightDirection</value>
+      <value type="string" datatypeLibrary="">RightToLeftDirection</value>
+      <value type="string" datatypeLibrary="">UnknownDirection</value>
+    </choice>
+  </define>
+  <define name="StoryHorizontalOrVertical_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Horizontal</value>
+      <value type="string" datatypeLibrary="">Vertical</value>
+      <value type="string" datatypeLibrary="">Unknown</value>
+    </choice>
+  </define>
+  <define name="StrokeAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CenterAlignment</value>
+      <value type="string" datatypeLibrary="">InsideAlignment</value>
+      <value type="string" datatypeLibrary="">OutsideAlignment</value>
+    </choice>
+  </define>
+  <define name="StrokeCornerAdjustment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">Dashes</value>
+      <value type="string" datatypeLibrary="">Gaps</value>
+      <value type="string" datatypeLibrary="">DashesAndGaps</value>
+    </choice>
+  </define>
+  <define name="StrokeOrderTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RowOnTop</value>
+      <value type="string" datatypeLibrary="">ColumnOnTop</value>
+      <value type="string" datatypeLibrary="">BestJoins</value>
+      <value type="string" datatypeLibrary="">Indesign2Compatibility</value>
+    </choice>
+  </define>
+  <define name="StyleSheetExportOption_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">EmbeddedCSS</value>
+    </choice>
+  </define>
+  <define name="TabStopAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+      <value type="string" datatypeLibrary="">CharacterAlign</value>
+    </choice>
+  </define>
+  <define name="TableDirectionOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LeftToRightDirection</value>
+      <value type="string" datatypeLibrary="">RightToLeftDirection</value>
+    </choice>
+  </define>
+  <define name="TableFormattingOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ExcelFormattedTable</value>
+      <value type="string" datatypeLibrary="">ExcelUnformattedTable</value>
+      <value type="string" datatypeLibrary="">ExcelUnformattedTabbedText</value>
+      <value type="string" datatypeLibrary="">ExcelFormatOnlyOnce</value>
+    </choice>
+  </define>
+  <define name="TagType_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TagFromStructure</value>
+      <value type="string" datatypeLibrary="">TagArtifact</value>
+      <value type="string" datatypeLibrary="">TagBasedOnObject</value>
+    </choice>
+  </define>
+  <define name="TaggedPDFStructureOrderOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UseXMLStructure</value>
+      <value type="string" datatypeLibrary="">UseArticles</value>
+    </choice>
+  </define>
+  <define name="TextImportCharacterSet_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Ansi</value>
+      <value type="string" datatypeLibrary="">RecommendShiftJIS83pv</value>
+      <value type="string" datatypeLibrary="">ShiftJIS90pv</value>
+      <value type="string" datatypeLibrary="">ShiftJIS90ms</value>
+      <value type="string" datatypeLibrary="">GB2312</value>
+      <value type="string" datatypeLibrary="">ChineseBig5</value>
+      <value type="string" datatypeLibrary="">MacintoshCE</value>
+      <value type="string" datatypeLibrary="">MacintoshCyrillic</value>
+      <value type="string" datatypeLibrary="">MacintoshGreek</value>
+      <value type="string" datatypeLibrary="">MacintoshTurkish</value>
+      <value type="string" datatypeLibrary="">WindowsCyrillic</value>
+      <value type="string" datatypeLibrary="">WindowsEE</value>
+      <value type="string" datatypeLibrary="">WindowsGreek</value>
+      <value type="string" datatypeLibrary="">WindowsTurkish</value>
+      <value type="string" datatypeLibrary="">GB18030</value>
+      <value type="string" datatypeLibrary="">KSC5601</value>
+      <value type="string" datatypeLibrary="">WindowsBaltic</value>
+      <value type="string" datatypeLibrary="">WindowsCE</value>
+      <value type="string" datatypeLibrary="">MacintoshRoman</value>
+      <value type="string" datatypeLibrary="">MacintoshCroatian</value>
+      <value type="string" datatypeLibrary="">MacintoshIcelandic</value>
+      <value type="string" datatypeLibrary="">MacintoshRomanian</value>
+      <value type="string" datatypeLibrary="">CyrillicKOI8R</value>
+      <value type="string" datatypeLibrary="">CyrillicKOI8U</value>
+      <value type="string" datatypeLibrary="">CyrillicCP855</value>
+      <value type="string" datatypeLibrary="">DOSLatin2</value>
+      <value type="string" datatypeLibrary="">CyrillicISO</value>
+      <value type="string" datatypeLibrary="">GreekISO</value>
+      <value type="string" datatypeLibrary="">CentralEuropeanISO</value>
+      <value type="string" datatypeLibrary="">TurkishISO</value>
+      <value type="string" datatypeLibrary="">MacintoshGreekSharedCaps</value>
+      <value type="string" datatypeLibrary="">MacintoshArabic</value>
+      <value type="string" datatypeLibrary="">MacintoshHebrew</value>
+      <value type="string" datatypeLibrary="">WindowsArabic</value>
+      <value type="string" datatypeLibrary="">WindowsHebrew</value>
+      <value type="string" datatypeLibrary="">ArabicASMO</value>
+      <value type="string" datatypeLibrary="">ArabicASMOTransparent</value>
+      <value type="string" datatypeLibrary="">UTF16</value>
+      <value type="string" datatypeLibrary="">UTF8</value>
+    </choice>
+  </define>
+  <define name="TextPathEffects_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">RainbowPathEffect</value>
+      <value type="string" datatypeLibrary="">SkewPathEffect</value>
+      <value type="string" datatypeLibrary="">RibbonPathEffect</value>
+      <value type="string" datatypeLibrary="">StairStepPathEffect</value>
+      <value type="string" datatypeLibrary="">GravityPathEffect</value>
+    </choice>
+  </define>
+  <define name="TextStrokeAlign_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CenterAlignment</value>
+      <value type="string" datatypeLibrary="">OutsideAlignment</value>
+    </choice>
+  </define>
+  <define name="TextTypeAlignments_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AscenderTextAlignment</value>
+      <value type="string" datatypeLibrary="">DescenderTextAlignment</value>
+      <value type="string" datatypeLibrary="">CenterTextAlignment</value>
+      <value type="string" datatypeLibrary="">BaselineTextAlignment</value>
+      <value type="string" datatypeLibrary="">AboveRightEmBoxTextAlignment</value>
+      <value type="string" datatypeLibrary="">BelowLeftEmBoxTextAlignment</value>
+      <value type="string" datatypeLibrary="">AboveRightIcfBoxTextAlignment</value>
+      <value type="string" datatypeLibrary="">BelowLeftIcfBoxTextAlignment</value>
+    </choice>
+  </define>
+  <define name="TextWrapModes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">JumpObjectTextWrap</value>
+      <value type="string" datatypeLibrary="">NextColumnTextWrap</value>
+      <value type="string" datatypeLibrary="">BoundingBoxTextWrap</value>
+      <value type="string" datatypeLibrary="">Contour</value>
+    </choice>
+  </define>
+  <define name="TextWrapSideOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">BothSides</value>
+      <value type="string" datatypeLibrary="">LeftSide</value>
+      <value type="string" datatypeLibrary="">RightSide</value>
+      <value type="string" datatypeLibrary="">SideTowardsSpine</value>
+      <value type="string" datatypeLibrary="">SideAwayFromSpine</value>
+      <value type="string" datatypeLibrary="">LargestArea</value>
+    </choice>
+  </define>
+  <define name="ThumbsPerPage_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">K1x2</value>
+      <value type="string" datatypeLibrary="">K2x2</value>
+      <value type="string" datatypeLibrary="">K3x3</value>
+      <value type="string" datatypeLibrary="">K4x4</value>
+      <value type="string" datatypeLibrary="">K5x5</value>
+      <value type="string" datatypeLibrary="">K6x6</value>
+      <value type="string" datatypeLibrary="">K7x7</value>
+    </choice>
+  </define>
+  <define name="TilingTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Auto</value>
+      <value type="string" datatypeLibrary="">AutoJustified</value>
+      <value type="string" datatypeLibrary="">Manual</value>
+    </choice>
+  </define>
+  <define name="TrapEndTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">MiterTrapEnds</value>
+      <value type="string" datatypeLibrary="">OverlapTrapEnds</value>
+    </choice>
+  </define>
+  <define name="TrapImagePlacementTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CenterEdges</value>
+      <value type="string" datatypeLibrary="">Choke</value>
+      <value type="string" datatypeLibrary="">ImageNeutralDensity</value>
+      <value type="string" datatypeLibrary="">ImagesOverSpread</value>
+    </choice>
+  </define>
+  <define name="Trapping_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Off</value>
+      <value type="string" datatypeLibrary="">ApplicationBuiltin</value>
+      <value type="string" datatypeLibrary="">AdobeInRIP</value>
+    </choice>
+  </define>
+  <define name="UIColors_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">LightBlue</value>
+      <value type="string" datatypeLibrary="">Red</value>
+      <value type="string" datatypeLibrary="">Green</value>
+      <value type="string" datatypeLibrary="">Blue</value>
+      <value type="string" datatypeLibrary="">Yellow</value>
+      <value type="string" datatypeLibrary="">Magenta</value>
+      <value type="string" datatypeLibrary="">Cyan</value>
+      <value type="string" datatypeLibrary="">Gray</value>
+      <value type="string" datatypeLibrary="">Black</value>
+      <value type="string" datatypeLibrary="">Orange</value>
+      <value type="string" datatypeLibrary="">DarkGreen</value>
+      <value type="string" datatypeLibrary="">Teal</value>
+      <value type="string" datatypeLibrary="">Tan</value>
+      <value type="string" datatypeLibrary="">Brown</value>
+      <value type="string" datatypeLibrary="">Violet</value>
+      <value type="string" datatypeLibrary="">Gold</value>
+      <value type="string" datatypeLibrary="">DarkBlue</value>
+      <value type="string" datatypeLibrary="">Pink</value>
+      <value type="string" datatypeLibrary="">Lavender</value>
+      <value type="string" datatypeLibrary="">BrickRed</value>
+      <value type="string" datatypeLibrary="">OliveGreen</value>
+      <value type="string" datatypeLibrary="">Peach</value>
+      <value type="string" datatypeLibrary="">Burgundy</value>
+      <value type="string" datatypeLibrary="">GrassGreen</value>
+      <value type="string" datatypeLibrary="">Ochre</value>
+      <value type="string" datatypeLibrary="">Purple</value>
+      <value type="string" datatypeLibrary="">LightGray</value>
+      <value type="string" datatypeLibrary="">Charcoal</value>
+      <value type="string" datatypeLibrary="">GridBlue</value>
+      <value type="string" datatypeLibrary="">GridOrange</value>
+      <value type="string" datatypeLibrary="">Fiesta</value>
+      <value type="string" datatypeLibrary="">LightOlive</value>
+      <value type="string" datatypeLibrary="">Lipstick</value>
+      <value type="string" datatypeLibrary="">CuteTeal</value>
+      <value type="string" datatypeLibrary="">Sulphur</value>
+      <value type="string" datatypeLibrary="">GridGreen</value>
+      <value type="string" datatypeLibrary="">White</value>
+    </choice>
+  </define>
+  <define name="UpdateLinkOptions_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Unknown</value>
+      <value type="string" datatypeLibrary="">ApplicationSettings</value>
+      <value type="string" datatypeLibrary="">KeepOverrides</value>
+    </choice>
+  </define>
+  <define name="VariableNumberingStyles_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Current</value>
+      <value type="string" datatypeLibrary="">Arabic</value>
+      <value type="string" datatypeLibrary="">UpperRoman</value>
+      <value type="string" datatypeLibrary="">LowerRoman</value>
+      <value type="string" datatypeLibrary="">UpperLetters</value>
+      <value type="string" datatypeLibrary="">LowerLetters</value>
+      <value type="string" datatypeLibrary="">Kanji</value>
+      <value type="string" datatypeLibrary="">FullWidthArabic</value>
+      <value type="string" datatypeLibrary="">SingleLeadingZeros</value>
+      <value type="string" datatypeLibrary="">DoubleLeadingZeros</value>
+    </choice>
+  </define>
+  <define name="VariableScopes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">DocumentScope</value>
+      <value type="string" datatypeLibrary="">SectionScope</value>
+    </choice>
+  </define>
+  <define name="VariableTypes_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">CustomTextType</value>
+      <value type="string" datatypeLibrary="">FileNameType</value>
+      <value type="string" datatypeLibrary="">LastPageNumberType</value>
+      <value type="string" datatypeLibrary="">ChapterNumberType</value>
+      <value type="string" datatypeLibrary="">OutputDateType</value>
+      <value type="string" datatypeLibrary="">CreationDateType</value>
+      <value type="string" datatypeLibrary="">ModificationDateType</value>
+      <value type="string" datatypeLibrary="">MatchCharacterStyleType</value>
+      <value type="string" datatypeLibrary="">MatchParagraphStyleType</value>
+      <value type="string" datatypeLibrary="">XrefPageNumberType</value>
+      <value type="string" datatypeLibrary="">XrefChapterNumberType</value>
+      <value type="string" datatypeLibrary="">LiveCaptionType</value>
+    </choice>
+  </define>
+  <define name="VerticalAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopAlign</value>
+      <value type="string" datatypeLibrary="">BottomAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+    </choice>
+  </define>
+  <define name="VerticalJustification_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">TopAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+      <value type="string" datatypeLibrary="">BottomAlign</value>
+      <value type="string" datatypeLibrary="">JustifyAlign</value>
+    </choice>
+  </define>
+  <define name="VerticallyRelativeTo_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">ColumnEdge</value>
+      <value type="string" datatypeLibrary="">TextFrame</value>
+      <value type="string" datatypeLibrary="">PageMargins</value>
+      <value type="string" datatypeLibrary="">PageEdge</value>
+      <value type="string" datatypeLibrary="">LineBaseline</value>
+      <value type="string" datatypeLibrary="">LineXheight</value>
+      <value type="string" datatypeLibrary="">LineAscent</value>
+      <value type="string" datatypeLibrary="">Capheight</value>
+      <value type="string" datatypeLibrary="">TopOfLeading</value>
+      <value type="string" datatypeLibrary="">EmboxTop</value>
+      <value type="string" datatypeLibrary="">EmboxMiddle</value>
+      <value type="string" datatypeLibrary="">EmboxBottom</value>
+    </choice>
+  </define>
+  <define name="ViewZoomStyle_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">FullScreen</value>
+      <value type="string" datatypeLibrary="">ZoomIn</value>
+      <value type="string" datatypeLibrary="">ZoomOut</value>
+      <value type="string" datatypeLibrary="">FitPage</value>
+      <value type="string" datatypeLibrary="">ActualSize</value>
+      <value type="string" datatypeLibrary="">FitWidth</value>
+      <value type="string" datatypeLibrary="">FitVisible</value>
+      <value type="string" datatypeLibrary="">SinglePage</value>
+      <value type="string" datatypeLibrary="">OneColumn</value>
+      <value type="string" datatypeLibrary="">TwoColumn</value>
+    </choice>
+  </define>
+  <define name="VisibilityInPdf_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">VisibleInPdf</value>
+      <value type="string" datatypeLibrary="">HiddenInPdf</value>
+      <value type="string" datatypeLibrary="">VisibleButDoesNotPrintInPdf</value>
+      <value type="string" datatypeLibrary="">HiddenButPrintableInPdf</value>
+    </choice>
+  </define>
+  <define name="WarichuAlignment_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">Auto</value>
+      <value type="string" datatypeLibrary="">LeftAlign</value>
+      <value type="string" datatypeLibrary="">CenterAlign</value>
+      <value type="string" datatypeLibrary="">RightAlign</value>
+      <value type="string" datatypeLibrary="">FullyJustified</value>
+      <value type="string" datatypeLibrary="">LeftJustified</value>
+      <value type="string" datatypeLibrary="">CenterJustified</value>
+      <value type="string" datatypeLibrary="">RightJustified</value>
+    </choice>
+  </define>
+  <define name="WatermarkHorizontalPositionEnum_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">WatermarkHLeft</value>
+      <value type="string" datatypeLibrary="">WatermarkHCenter</value>
+      <value type="string" datatypeLibrary="">WatermarkHRight</value>
+    </choice>
+  </define>
+  <define name="WatermarkVerticalPositionEnum_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">WatermarkVTop</value>
+      <value type="string" datatypeLibrary="">WatermarkVCenter</value>
+      <value type="string" datatypeLibrary="">WatermarkVBottom</value>
+    </choice>
+  </define>
+  <define name="XMLExportUntaggedTablesFormat_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">None</value>
+      <value type="string" datatypeLibrary="">CALS</value>
+    </choice>
+  </define>
+  <define name="XMLFileEncoding_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">UTF8</value>
+      <value type="string" datatypeLibrary="">UTF16</value>
+      <value type="string" datatypeLibrary="">ShiftJIS</value>
+    </choice>
+  </define>
+  <define name="XMLImportStyles_EnumValue">
+    <choice>
+      <value type="string" datatypeLibrary="">AppendImport</value>
+      <value type="string" datatypeLibrary="">MergeImport</value>
+    </choice>
+  </define>
+  <define name="XMLTransformFile_EnumValue">
+    <value type="string" datatypeLibrary="">StylesheetInXML</value>
+  </define>
+</grammar>
