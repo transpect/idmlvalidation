@@ -14,6 +14,7 @@
   <!-- option validate-regex:
        choose regex for files and in which directories idmlval should validate -->
   <p:option name="validate-regex" select="'(designmap|Resources|XML|MasterSpreads|Spreads|Stories)'" />
+  <p:option name="domversion" select="''"/>
 
   <p:output port="result" primary="true">
     <p:pipe step="val-component-wrapper" port="result"/>
@@ -64,11 +65,12 @@
         <p:inline>
           <xsl:stylesheet version="2.0">
             <xsl:param name="base-uri" />
-            <xsl:variable name="dom-version"
+            <xsl:param name="domversion" />
+            <xsl:variable name="designmap-domversion"
               select="document(concat($base-uri,'/designmap.xml'))/*/@DOMVersion"/>
             <xsl:template match="/c:file">
               <c:result>
-                <xsl:value-of select="$dom-version, '/'" separator=""/>
+                <xsl:value-of select="($domversion, $designmap-domversion)[. ne ''][1], '/'" separator=""/>
                 <xsl:choose>
                   <xsl:when test="matches(@name, '^Stories')">Stories/Story.rng</xsl:when>
                   <xsl:when test="matches(@name, '^Spreads/')">Spreads/Spread.rng</xsl:when>
@@ -83,6 +85,7 @@
         </p:inline>
       </p:input>
       <p:with-param name="base-uri" select="base-uri()"/>
+      <p:with-param name="domversion" select="$domversion"/>
       <p:input port="parameters"><p:empty/></p:input>
     </p:xslt>
 
