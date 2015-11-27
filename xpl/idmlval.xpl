@@ -3,16 +3,16 @@
   xmlns:c ="http://www.w3.org/ns/xproc-step"  
   xmlns:cx ="http://xmlcalabash.com/ns/extensions"
   xmlns:xsl ="http://www.w3.org/1999/XSL/Transform" 
-  xmlns:letex ="http://www.le-tex.de/namespace"
+  xmlns:tr ="http://transpect.io"
   version="1.0"
   name="idml-validation"
-  type="letex:idml-validation"
+  type="tr:idml-validation"
   >
 
   <p:option name="idmlfile" required="true"/>
 
   <!-- option validate-regex:
-       choose regex for files and in which directories idmlval should validate -->
+       choose regex for files and in which directories idmlvalidation should validate -->
   <p:option name="validate-regex" select="'(designmap|Resources|XML|MasterSpreads|Spreads|Stories)'" />
   <p:option name="domversion" select="''"/>
 
@@ -21,14 +21,14 @@
   </p:output>
 
   <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl" />
-  <p:import href="http://transpect.le-tex.de/calabash-extensions/ltx-lib.xpl" />
-  <p:import href="http://transpect.le-tex.de/rngvalid/rng-schematron.xpl" />
+  <p:import href="http://transpect.io/calabash-extensions/ltx-lib.xpl" />
+  <p:import href="http://transpect.io/calabash-extensions/rng-extension/xpl/rng-schematron.xpl" />
 
-  <letex:unzip name="unzip">
+  <tr:unzip name="unzip">
     <p:with-option name="zip" select="$idmlfile" />
     <p:with-option name="dest-dir" select="concat($idmlfile, '.tmp')"/>
     <p:with-option name="overwrite" select="'yes'" />
-  </letex:unzip>
+  </tr:unzip>
 
   <cx:message>
     <p:with-option name="message" 
@@ -95,7 +95,7 @@
       </p:with-option>
     </p:load>
 
-    <letex:validate-with-rng-sch name="val-component">
+    <tr:validate-with-rng-sch name="val-component">
       <p:with-option name="rngfile" 
         select="resolve-uri(
                   concat('../schema/rng/', /c:result), 
@@ -104,7 +104,7 @@
         <p:pipe step="rng-selection" port="result"/>
       </p:with-option>
       <p:with-option name="info-messages" select="'true'" />
-    </letex:validate-with-rng-sch>
+    </tr:validate-with-rng-sch>
     <p:sink/>
 
   </p:for-each>
