@@ -21,7 +21,6 @@
   </p:output>
 
   <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl" />
-  <p:import href="http://transpect.io/calabash-extensions/transpect-lib.xpl" />
   <p:import href="http://transpect.io/calabash-extensions/rng-extension/xpl/rng-schematron.xpl" />
 
   <tr:unzip name="unzip">
