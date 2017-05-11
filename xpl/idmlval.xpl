@@ -4,6 +4,7 @@
   xmlns:cx ="http://xmlcalabash.com/ns/extensions"
   xmlns:xsl ="http://www.w3.org/1999/XSL/Transform" 
   xmlns:tr ="http://transpect.io"
+  xmlns:tr-internal="http://transpect.io/internal"
   version="1.0"
   name="idml-validation"
   type="tr:idml-validation"
@@ -22,12 +23,13 @@
 
   <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl" />
   <p:import href="http://transpect.io/calabash-extensions/rng-extension/xpl/rng-schematron.xpl" />
+  <p:import href="http://transpect.io/calabash-extensions/unzip-extension/internal-unzip-declaration.xpl" />
 
-  <tr:unzip name="unzip">
+  <tr-internal:unzip name="unzip">
     <p:with-option name="zip" select="$idmlfile" />
     <p:with-option name="dest-dir" select="concat($idmlfile, '.tmp')"/>
     <p:with-option name="overwrite" select="'yes'" />
-  </tr:unzip>
+  </tr-internal:unzip>
 
   <cx:message>
     <p:with-option name="message" 
