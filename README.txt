@@ -1,6 +1,3 @@
-An InDesign Markup Language Validator
+#An InDesign Markup Language Validator
 
--XProc-Step-
-
-Frontend: 
-https://subversion.le-tex.de/idmltools/trunk/validation_frontend/
+XProc-Step for IDML validation. See schema directory for supported versions.
