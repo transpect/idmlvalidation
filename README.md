@@ -15,5 +15,5 @@ app.generateIDMLSchema(Folder("/idml-schema/package"), true);
 2. Copy the files to this repository in `schema/rnc/{$version}`, 
 whereas `{$version}` is the version number of InDesign.
 
-3. Run `rnc/rnc2rng.sh {$version}` to create
+3. Run `rnc2rng.sh {$version}` from the `rnc` directory to create
  the RNG schema files in the directory `rng/{$version}`
