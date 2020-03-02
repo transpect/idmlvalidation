@@ -170,30 +170,30 @@ VisibilityPair_TypeDef =
 RasterizeDocParams_TypeDef = xsd:string 
 
 # @private
-ExportMiniFolioParams_TypeDef = xsd:string 
+# ExportMiniFolioParams_TypeDef = xsd:string 
 
 # Metadata information for an exported folio.
 
-Schema for packaged folios:
-|| Key || Required? || Description ||
-| magazineTitle | yes | The title for the magazine or publication |
-| folioNumber | yes | The folio's number (e.g., "Folio #42") |
-| description | no | The optional textual description for the folio |
-| category | no | The category for the magazine (e.g., "Weekly Fashion") |
+# Schema for packaged folios:
+# || Key || Required? || Description ||
+# | magazineTitle | yes | The title for the magazine or publication |
+# | folioNumber | yes | The folio's number (e.g., "Folio #42") |
+# | description | no | The optional textual description for the folio |
+# | category | no | The category for the magazine (e.g., "Weekly Fashion") |
 
-Schema for mini-folios (articles):
-|| Key || Required? || Description ||
-| title | yes | The title for the article |
-| author | no | The author of the article |
-| kicker | no | The article's "kicker", a brief summation or abstract of the article's contents |
-| isAdvertisement | no | Either "true" or "false" to indicate whether article is an advertisement |
-| hideFromTOC | no | Either "true" or "false" to indicate whether article should be hidden from the table of contents (TOC) |
-| intent | no | The intent of the article. This is used by the viewer to navigate to a specific article. |
-| section | no | The section that the article belongs to |
-| tags | no | A comma-delimited list of descriptive tags for the article |
-| isTrustedContent | no | Either "true" or "false" to indicate whether article content should be trusted and granted access to V1 JSAPI.  |
+# Schema for mini-folios (articles):
+# || Key || Required? || Description ||
+# | title | yes | The title for the article |
+# | author | no | The author of the article |
+# | kicker | no | The article's "kicker", a brief summation or abstract of the article's contents |
+# | isAdvertisement | no | Either "true" or "false" to indicate whether article is an advertisement |
+# | hideFromTOC | no | Either "true" or "false" to indicate whether article should be hidden from the table of contents (TOC) |
+# | intent | no | The intent of the article. This is used by the viewer to navigate to a specific article. |
+# | section | no | The section that the article belongs to |
+# | tags | no | A comma-delimited list of descriptive tags for the article |
+# | isTrustedContent | no | Either "true" or "false" to indicate whether article content should be trusted and granted access to V1 JSAPI.  |
 
-@example(app.exportMiniFolio(new File("/c/temp/foo.folio"), docP, docL, [ [ "title", "Digital Publishing with Adobe InDesign" ], [ "tags", "fun,publishing,InDesign" ] ], [ ... ]);)
+# @example(app.exportMiniFolio(new File("/c/temp/foo.folio"), docP, docL, [ [ "title", "Digital Publishing with Adobe InDesign" ], [ "tags", "fun,publishing,InDesign" ] ], [ ... ]);)
 ExportFolioMetaData_TypeDef = 
   attribute Key { xsd:string },
   attribute Value { xsd:string }
