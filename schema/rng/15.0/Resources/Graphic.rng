@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adobe InDesign 2020 15.0.1.209 -->
+<grammar xmlns:idPkg="http://ns.adobe.com/AdobeInDesign/idml/1.0/packaging" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="Graphic_File"/>
+  </start>
+  <include href="../datatype.rng"/>
+  <define name="Graphic_File">
+    <element name="idPkg:Graphic">
+      <attribute name="DOMVersion">
+        <value>15.0</value>
+      </attribute>
+      <group>
+        <zeroOrMore>
+          <ref name="Color_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Ink_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="MixedInkGroup_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="MixedInk_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="PastedSmoothShade_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Tint_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Swatch_Object"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Gradient_Object"/>
+        </zeroOrMore>
+        <interleave>
+          <zeroOrMore>
+            <ref name="StrokeStyle_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="DashedStrokeStyle_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="DottedStrokeStyle_Object"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="StripedStrokeStyle_Object"/>
+          </zeroOrMore>
+        </interleave>
+      </group>
+    </element>
+  </define>
+  <define name="Color_Object">
+    <element name="Color">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Model">
+          <ref name="ColorModel_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Space">
+          <ref name="ColorSpace_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorValue">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorOverride">
+          <ref name="ColorOverride_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BaseColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpotInkAliasSpotColorReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AlternateSpace">
+          <ref name="ColorSpace_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AlternateColorValue">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ColorEditable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorRemovable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchCreatorID">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchColorGroupReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Ink_Object">
+    <element name="Ink">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="AliasInkName">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Angle">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">360</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ConvertToProcess">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Frequency">
+          <data type="double">
+            <param name="minInclusive">1</param>
+            <param name="maxInclusive">500</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="NeutralDensity">
+          <data type="double">
+            <param name="minInclusive">0.001</param>
+            <param name="maxInclusive">10</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="PrintInk">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="TrapOrder">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InkType">
+          <ref name="InkTypes_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="MixedInkGroup_Object">
+    <element name="MixedInkGroup">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Model">
+          <ref name="ColorModel_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InkList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InkNameList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MixedInkSpotColorNameList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MixedInkSpotColorList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ColorEditable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorRemovable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchCreatorID">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchColorGroupReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="MixedInk_Object">
+    <element name="MixedInk">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Model">
+          <ref name="ColorModel_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Space">
+          <ref name="ColorSpace_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InkList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InkPercentages">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="BaseColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="InkNameList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MixedInkSpotColorNameList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="MixedInkSpotColorList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ColorEditable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorRemovable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchCreatorID">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchColorGroupReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="PastedSmoothShade_Object">
+    <element name="PastedSmoothShade">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ContentsVersion">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ContentsType">
+          <ref name="ContentsTypeSettings_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpotColorList">
+          <list>
+            <zeroOrMore>
+              <data type="string"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ContentsEncoding">
+          <ref name="EncodingType_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ContentsMatrix">
+          <ref name="TransformationMatrixType_TypeDef"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ColorEditable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorRemovable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchCreatorID">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchColorGroupReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <interleave>
+            <optional>
+              <element name="Contents">
+                <text/>
+              </element>
+            </optional>
+            <optional>
+              <element name="Label">
+                <zeroOrMore>
+                  <element name="KeyValuePair">
+                    <ref name="KeyValuePair_TypeDef"/>
+                  </element>
+                </zeroOrMore>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Tint_Object">
+    <element name="Tint">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="TintValue">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <attribute name="BaseColor">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ColorOverride">
+          <ref name="ColorOverride_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SpotInkAliasSpotColorReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AlternateSpace">
+          <ref name="ColorSpace_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="AlternateColorValue">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorEditable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorRemovable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchCreatorID">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchColorGroupReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Swatch_Object">
+    <element name="Swatch">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ColorEditable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorRemovable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchCreatorID">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchColorGroupReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Gradient_Object">
+    <element name="Gradient">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="Type">
+          <ref name="GradientType_EnumValue"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="ColorEditable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ColorRemovable">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Visible">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchCreatorID">
+          <data type="int"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="SwatchColorGroupReference">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="Properties">
+          <optional>
+            <element name="Label">
+              <zeroOrMore>
+                <element name="KeyValuePair">
+                  <ref name="KeyValuePair_TypeDef"/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="GradientStop_Object"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="GradientStop_Object">
+    <element name="GradientStop">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="StopColor">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Location">
+          <data type="double">
+            <param name="minInclusive">0</param>
+            <param name="maxInclusive">100</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="Midpoint">
+          <data type="double">
+            <param name="minInclusive">13</param>
+            <param name="maxInclusive">87</param>
+          </data>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="StrokeStyle_Object">
+    <element name="StrokeStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="DashedStrokeStyle_Object">
+    <element name="DashedStrokeStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="DashArray">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeCornerAdjustment">
+          <ref name="StrokeCornerAdjustment_EnumValue"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="EndCap">
+          <ref name="EndCap_EnumValue"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="DottedStrokeStyle_Object">
+    <element name="DottedStrokeStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="DotArray">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="StrokeCornerAdjustment">
+          <ref name="StrokeCornerAdjustment_EnumValue"/>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="StripedStrokeStyle_Object">
+    <element name="StripedStrokeStyle">
+      <attribute name="Self">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="StripeArray">
+          <list>
+            <zeroOrMore>
+              <data type="double"/>
+            </zeroOrMore>
+          </list>
+        </attribute>
+      </optional>
+      <attribute name="Name">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+</grammar>
